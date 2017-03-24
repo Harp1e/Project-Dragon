@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] float chaseRadius = 5f;
-    [SerializeField] float chaseStopRadius = 5f;
+    float chaseStopRadius = 5f;
 
     [SerializeField] float attackRadius = 4f;
     [SerializeField] float damagePerShot = 9f;
@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         player = GameObject.FindGameObjectWithTag("Player");
         aiCharacterControl = GetComponent<AICharacterControl>();
         currentHealthPoints = maxHealthPoints;
+        chaseStopRadius = chaseRadius;
     }
 
     private void Update()
