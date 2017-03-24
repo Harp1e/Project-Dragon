@@ -40,7 +40,9 @@ public class Enemy : MonoBehaviour, IDamageable {
         player = GameObject.FindGameObjectWithTag("Player");
         aiCharacterControl = GetComponent<AICharacterControl>();
         currentHealthPoints = maxHealthPoints;
-    }    private void Update()
+    }
+
+    private void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
         if (distanceToPlayer <= chaseRadius || (distanceToPlayer <= chaseStopRadius && isChasing))
