@@ -27,7 +27,8 @@ public class Projectile : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         Component damageableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
-        if (damageableComponent) // && (shooter.GetType() != collision.gameObject.GetType()))
+        if (damageableComponent && (shooter.tag != collision.gameObject.tag))
+           
         {
             (damageableComponent as IDamageable).TakeDamage(damageCaused);
         }
