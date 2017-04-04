@@ -4,11 +4,14 @@ public class CameraFollow : MonoBehaviour {
 
     GameObject player;
 
-	void Start () {
+	void Start ()
+    {
         player = GameObject.FindGameObjectWithTag("Player");	
 	}
 	
-	void LateUpdate () {
+	void LateUpdate ()
+    {
+//        transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f);
         transform.position = player.transform.position;
-	}
+    }
 }
