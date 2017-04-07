@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000446, guid: 43ee03e9406ed904f855eac8e2c6e6e1,
+  m_LightingDataAsset: {fileID: 112000383, guid: 8057c29cc479c2047b4060f17799c5a2,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -4675,7 +4675,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn Point 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6050,7 +6050,8 @@ Prefab:
 --- !u!1 &1596592114
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1633602026120106, guid: b68fd41bb4f0fc3459bac95a1396184f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -6067,7 +6068,8 @@ GameObject:
 --- !u!154 &1596592115
 TerrainCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 154491628677842636, guid: b68fd41bb4f0fc3459bac95a1396184f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1596592114}
   m_Material: {fileID: 0}
@@ -6077,7 +6079,8 @@ TerrainCollider:
 --- !u!218 &1596592116
 Terrain:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 218959612076143358, guid: b68fd41bb4f0fc3459bac95a1396184f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1596592114}
   m_Enabled: 1
@@ -6108,7 +6111,8 @@ Terrain:
 --- !u!4 &1596592117
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4344290476898848, guid: b68fd41bb4f0fc3459bac95a1396184f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1596592114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
