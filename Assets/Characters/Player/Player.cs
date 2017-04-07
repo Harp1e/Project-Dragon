@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable {
+public class Player : MonoBehaviour, IDamageable
+{
+
+    [SerializeField] Weapon weaponInUse;
 
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] float damagePerHit = 10f;
@@ -22,12 +26,26 @@ public class Player : MonoBehaviour, IDamageable {
 
     void Start()
     {
-        cameraRaycaster = FindObjectOfType<CameraRaycaster>();
-        cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
+        RegisterForMouseClick ();
         currentHealthPoints = maxHealthPoints;
+        PutWeaponInHand ();
     }
 
-     void OnMouseClick(RaycastHit raycastHit, int layerHit)
+    private void PutWeaponInHand ()
+    {
+        var weaponPrefab = weaponInUse.GetWeaponPrefab ();
+        weaponPrefab = Instantiate (weaponPrefab);
+        // TODO move to correct position annd parent to hand
+    }
+
+    void RegisterForMouseClick ()
+    {
+        cameraRaycaster = FindObjectOfType<CameraRaycaster> ();
+        cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
+    }
+
+
+    void OnMouseClick(RaycastHit raycastHit, int layerHit)
     {
         if (layerHit == enemyLayer)
         {
