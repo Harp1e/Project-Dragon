@@ -7,6 +7,7 @@ public class Player : MonoBehaviour, IDamageable
 {
 
     [SerializeField] Weapon weaponInUse;
+    [SerializeField] GameObject weaponSocket;
 
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] float damagePerHit = 10f;
@@ -34,8 +35,9 @@ public class Player : MonoBehaviour, IDamageable
     private void PutWeaponInHand ()
     {
         var weaponPrefab = weaponInUse.GetWeaponPrefab ();
-        weaponPrefab = Instantiate (weaponPrefab);
-        // TODO move to correct position annd parent to hand
+        var weapon = Instantiate (weaponPrefab, weaponSocket.transform);
+        weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
+        weapon.transform.localRotation = weaponInUse.gripTransform.localRotation;
     }
 
     void RegisterForMouseClick ()
