@@ -12,11 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] const int walkableLayerNumber = 8;
     [SerializeField] const int enemyLayerNumber = 9;
 
-    ThirdPersonCharacter thirdPersonCharacter = null;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster = null;
     AICharacterControl aiCharacterControl = null;
 
-    Vector3 currentDestination, clickPoint;
     GameObject walkTarget = null;
 
     bool isInDirectMode = false;
@@ -24,9 +22,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-        thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
         aiCharacterControl = GetComponent<AICharacterControl>();
-        currentDestination = transform.position;
         walkTarget = new GameObject("walkTarget");
 
         cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick; // Register for Mouse clicks

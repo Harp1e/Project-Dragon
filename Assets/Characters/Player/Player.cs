@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Player : MonoBehaviour, IDamageable
 {
-
+     
     [SerializeField] Weapon weaponInUse;
-    [SerializeField] GameObject weaponSocket;
 
     [SerializeField] float maxHealthPoints = 100f;
     [SerializeField] float damagePerHit = 10f;
@@ -17,7 +17,6 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] int enemyLayer = 9;
 
     CameraRaycaster cameraRaycaster;
-    GameObject currentTarget;
 
     float currentHealthPoints;
     float lastHitTime = 0f;
@@ -35,9 +34,19 @@ public class Player : MonoBehaviour, IDamageable
     private void PutWeaponInHand ()
     {
         var weaponPrefab = weaponInUse.GetWeaponPrefab ();
-        var weapon = Instantiate (weaponPrefab, weaponSocket.transform);
+        GameObject dominantHand = RequestDominantHand ();
+        var weapon = Instantiate (weaponPrefab, dominantHand.transform);
         weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
         weapon.transform.localRotation = weaponInUse.gripTransform.localRotation;
+    }
+
+    private GameObject RequestDominantHand ()
+    {
+        var dominantHands = GetComponentsInChildren<DominantHand> ();
+        int numberOfDominantHands = dominantHands.Length;
+        Assert.IsFalse (numberOfDominantHands <= 0, "No DominantHand found on Player. Please add one.");
+        Assert.IsFalse (numberOfDominantHands > 1, "Multiple DominantHand scripts found on Player. Please remove all but one.");
+        return dominantHands[0].gameObject;
     }
 
     void RegisterForMouseClick ()
@@ -48,16 +57,15 @@ public class Player : MonoBehaviour, IDamageable
 
 
     void OnMouseClick(RaycastHit raycastHit, int layerHit)
+    // TODO refactor to simplify and reduce length & complexity
     {
         if (layerHit == enemyLayer)
         {
             GameObject enemy = raycastHit.collider.gameObject;
-            if ((enemy.transform.position - transform.position).magnitude > maxAttackRange)
+            if (enemy == null || (enemy.transform.position - transform.position).magnitude > maxAttackRange)
             {
                 return;
             }
-
-            currentTarget = enemy;
 
             var enemyComponent = enemy.GetComponent<Enemy>();
             if(Time.time - lastHitTime > minTimeBetweenHits)
@@ -65,7 +73,6 @@ public class Player : MonoBehaviour, IDamageable
                 enemyComponent.TakeDamage(damagePerHit);
                 lastHitTime = Time.time;
             }
-            
         }
     }
 
