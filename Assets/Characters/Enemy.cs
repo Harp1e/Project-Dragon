@@ -84,15 +84,15 @@ public class Enemy : MonoBehaviour, IDamageable {
     private void OnDrawGizmos()
     {
         // Draw chase sphere
-        Gizmos.color = new Color(0f, 0f, 255f, 0.5f);
+        Gizmos.color = new Color(0f, 0f, 255f, 0.7f);
         Gizmos.DrawWireSphere(transform.position, chaseRadius);
 
         // Draw chaseStop sphere
-        Gizmos.color = new Color(0f, 255f, 255f, 0.5f);
+        Gizmos.color = new Color(0f, 255f, 255f, 0.7f);
         Gizmos.DrawWireSphere(transform.position, chaseStopRadius);
 
         // Draw attack sphere
-        Gizmos.color = new Color(255f, 0f, 0f, 0.5f);
+        Gizmos.color = new Color(255f, 0f, 0f, 0.7f);
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }
