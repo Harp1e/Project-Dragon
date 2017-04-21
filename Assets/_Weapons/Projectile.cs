@@ -31,22 +31,21 @@ namespace RPG.Weapons
 
         private void OnCollisionEnter (Collision collision)
         {
-            DamageIfDamageable (collision);
+            var layerCollidedWith = collision.gameObject.layer;
+            if (shooter && layerCollidedWith != shooter.layer)
+            {
+                DamageIfDamageable (collision);
+            }
         }
 
         private void DamageIfDamageable (Collision collision)
-        {
-            var layerCollidedWith = collision.gameObject.layer;
-            if (layerCollidedWith != shooter.layer)
+        {            
+            Component damageableComponent = collision.gameObject.GetComponent (typeof (IDamageable));
+            if (damageableComponent)
             {
-                Component damageableComponent = collision.gameObject.GetComponent (typeof (IDamageable));
-                if (damageableComponent)
-
-                {
-                    (damageableComponent as IDamageable).TakeDamage (damageCaused);
-                }
-                Destroy (gameObject, DESTROY_DELAY);
+                (damageableComponent as IDamageable).TakeDamage (damageCaused);
             }
+            Destroy (gameObject, DESTROY_DELAY);
         }
     }
 }

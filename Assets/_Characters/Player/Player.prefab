@@ -692,6 +692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInUse: {fileID: 11400000, guid: 0a08a793cf56ae7479f69b4126ed5328, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: cbcfd0a0148a45e4e8276ecf23f9bf0b,
+    type: 2}
   maxHealthPoints: 1000
   damagePerHit: 50
   minTimeBetweenHits: 1
@@ -778,6 +780,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -816,6 +819,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263407292354660}
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 8

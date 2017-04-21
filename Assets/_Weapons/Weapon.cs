@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Weapons
 {
-    [CreateAssetMenu (menuName = "RPG/Weapon")]
+    [CreateAssetMenu (menuName = ("RPG/Weapon"))]
     public class Weapon : ScriptableObject
     {
         public Transform gripTransform;
@@ -15,6 +15,11 @@ namespace RPG.Weapons
         public GameObject GetWeaponPrefab ()
         {
             return weaponPrefab;
+        }
+
+        public AnimationClip GetAttackAnimClip ()
+        {
+            return attackAnimation;
         }
     }
 }
