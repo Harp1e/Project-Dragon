@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
+using UnityStandardAssets.Characters.ThirdPerson;   //TODO remove 3rdPerson namespace
 using UnityEngine.AI;
 // Consider re-wiring
 using RPG.CameraUI;
