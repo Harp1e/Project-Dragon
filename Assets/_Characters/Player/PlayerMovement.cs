@@ -21,7 +21,7 @@ namespace RPG.Characters
 
         GameObject walkTarget = null;
 
-        bool isInDirectMode = false;
+        //bool isInDirectMode = false;
 
         void Start ()
         {
