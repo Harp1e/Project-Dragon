@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4008680106485982}
   - component: {fileID: 33165938637922402}
   - component: {fileID: 23612780236380612}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4315227267876238}
   - component: {fileID: 65675455346909756}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33165938637922402
 MeshFilter:
