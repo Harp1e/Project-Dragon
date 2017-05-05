@@ -21,12 +21,12 @@ GameObject:
   - component: {fileID: 4217798662874854}
   - component: {fileID: 33295730945278706}
   - component: {fileID: 23596222406462226}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BezierCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967255
   m_IsActive: 1
 --- !u!1 &1097337679992970
 GameObject:
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4791235777728142}
   - component: {fileID: 65693525010228446}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Rickety Bridge Piece (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4848370663276096}
   - component: {fileID: 65426183531222560}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Rickety Bridge Piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,12 +70,12 @@ GameObject:
   - component: {fileID: 4437623932045052}
   - component: {fileID: 33686071763527520}
   - component: {fileID: 23210050727188912}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BezierCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967255
   m_IsActive: 1
 --- !u!1 &1383999176061176
 GameObject:
@@ -87,12 +87,12 @@ GameObject:
   - component: {fileID: 4124676189673080}
   - component: {fileID: 33452125262782006}
   - component: {fileID: 23161576943124246}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BezierCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967263
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967255
   m_IsActive: 1
 --- !u!1 &1781003588008482
 GameObject:
@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4361662866108276}
   - component: {fileID: 65147546255829626}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Rickety Bridge Piece (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1781003588008482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 94.9, y: 2.09, z: -37.46}
+  m_LocalPosition: {x: 94.9, y: 1.98, z: -37.46}
   m_LocalScale: {x: 10.198181, y: 0.051664572, z: 2.215978}
   m_Children: []
   m_Father: {fileID: 4895679995452780}
