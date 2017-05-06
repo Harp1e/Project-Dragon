@@ -49,7 +49,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4676775999683354}
-  - component: {fileID: 114999248040994678}
   m_Layer: 10
   m_Name: Hand_L
   m_TagString: Untagged
@@ -239,6 +238,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4203125529213670}
+  - component: {fileID: 114806213314259352}
   m_Layer: 10
   m_Name: Hand_R
   m_TagString: Untagged
@@ -453,15 +453,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263407292354660}
-  m_LocalRotation: {x: -0, y: 0.8257973, z: -0, w: 0.5639671}
-  m_LocalPosition: {x: 6.4, y: 8.48, z: -64.9}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 10.13, y: 0, z: 9.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4174461167386546}
   - {fileID: 4910723879406890}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 111.339005, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4465941804068104
 Transform:
   m_ObjectHideFlags: 1
@@ -691,14 +691,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e0d50e1c7a6584aaed0aae1370f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInUse: {fileID: 11400000, guid: 0a08a793cf56ae7479f69b4126ed5328, type: 2}
+  weaponInUse: {fileID: 11400000, guid: c44333dffd1011c47b2bc4bbcd945fe1, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: cbcfd0a0148a45e4e8276ecf23f9bf0b,
     type: 2}
   maxHealthPoints: 1000
   damagePerHit: 50
-  minTimeBetweenHits: 1
-  maxAttackRange: 2
   enemyLayer: 9
+--- !u!114 &114806213314259352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820783233137948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9e865ae3a48414899917ccd42fc9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114837896386001234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -722,24 +731,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87442bbe9924bf545b03867b9311b8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114999248040994678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1140285430844384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9e865ae3a48414899917ccd42fc9b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &136049109378190418
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263407292354660}
-  m_Material: {fileID: 13400000, guid: 52baaeb214519f347a35cf0edfd262ff, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
