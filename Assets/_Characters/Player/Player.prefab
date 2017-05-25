@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e0d50e1c7a6584aaed0aae1370f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInUse: {fileID: 11400000, guid: c44333dffd1011c47b2bc4bbcd945fe1, type: 2}
+  weaponInUse: {fileID: 11400000, guid: 0a08a793cf56ae7479f69b4126ed5328, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: cbcfd0a0148a45e4e8276ecf23f9bf0b,
     type: 2}
   maxHealthPoints: 1000
