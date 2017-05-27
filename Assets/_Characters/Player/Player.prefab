@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 114837896386001234}
   - component: {fileID: 114873154497214198}
   - component: {fileID: 114361097137320446}
+  - component: {fileID: 114461706685701848}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -453,15 +454,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263407292354660}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 10.13, y: 0, z: 9.75}
+  m_LocalRotation: {x: -0, y: -0.70372003, z: -0, w: -0.7104775}
+  m_LocalPosition: {x: 6.4007177, y: 7.97, z: -64.89549}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4174461167386546}
   - {fileID: 4910723879406890}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -270.548, z: 0}
 --- !u!4 &4465941804068104
 Transform:
   m_ObjectHideFlags: 1
@@ -691,12 +692,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e0d50e1c7a6584aaed0aae1370f05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInUse: {fileID: 11400000, guid: 0a08a793cf56ae7479f69b4126ed5328, type: 2}
+  weaponInUse: {fileID: 11400000, guid: 9c2fc06df522ab246a9ebc4f0ed2ff8b, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: cbcfd0a0148a45e4e8276ecf23f9bf0b,
     type: 2}
   maxHealthPoints: 1000
   damagePerHit: 50
   enemyLayer: 9
+--- !u!114 &114461706685701848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1263407292354660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d9375543b832040b82e6d98175b02b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyBar: {fileID: 0}
+  maxEnergyPoints: 100
+  pointsPerHit: 10
 --- !u!114 &114806213314259352
 MonoBehaviour:
   m_ObjectHideFlags: 1
