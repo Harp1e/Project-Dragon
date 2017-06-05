@@ -15,7 +15,7 @@ namespace RPG.Characters
 
         void Start ()
         {
-            
+            print ("Power Attack Behaviour 1 attached to " + gameObject.name);
         }
 
         void Update ()
