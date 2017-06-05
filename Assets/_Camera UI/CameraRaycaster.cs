@@ -47,9 +47,9 @@ namespace RPG.CameraUI
             RaycastHit hitInfo;
             Physics.Raycast (ray, out hitInfo, maxRaycastDepth);
             if (hitInfo.transform == null) { return false; }
-            var gameObjectHit = hitInfo.collider.gameObject;
+            var gameObjectHit = hitInfo.collider.gameObject;    // TODO ensure audio triggers do not give wrong gameobject
             var enemyHit = gameObjectHit.GetComponent<Enemy> ();
-            if (enemyHit)
+            if (enemyHit)   // TODO eliminate Healers & Companions from selection
             {
                 Cursor.SetCursor (enemyCursor, cursorHotspot, CursorMode.Auto);
                 onMouseOverEnemy (enemyHit);
