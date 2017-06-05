@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1025531952764710}
   m_LocalRotation: {x: 0.27930123, y: -0.37105903, z: 0.13728471, w: 0.87490517}
-  m_LocalPosition: {x: 8.48, y: 5.58, z: -4.42}
+  m_LocalPosition: {x: 4.67, y: 5.17, z: -3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4364588870343174}
@@ -105,6 +105,8 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -135,6 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerPriorities: 0900000008000000
+  walkCursor: {fileID: 2800000, guid: c82388e8676a2b54a90d17c8d2cf3489, type: 3}
+  cursorHotspot: {x: 0, y: 0}
 --- !u!114 &114858650887727554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b65f76d9d3a0b749a613f0a8f7413f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkCursor: {fileID: 2800000, guid: c82388e8676a2b54a90d17c8d2cf3489, type: 3}
   targetCursor: {fileID: 2800000, guid: bd27920bd7550a349bef17dbde138669, type: 3}
   unknownCursor: {fileID: 2800000, guid: bc20ab31069859c4a916b1f7240201b7, type: 3}
   cursorHotspot: {x: 0, y: 0}
