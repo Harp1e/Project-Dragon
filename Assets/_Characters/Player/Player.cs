@@ -19,8 +19,6 @@ namespace RPG.Characters
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float damagePerHit = 10f;
 
-        [SerializeField] int enemyLayer = 9;
-
         Animator animator;
         CameraRaycaster cameraRaycaster;
 
@@ -76,29 +74,23 @@ namespace RPG.Characters
         void RegisterForMouseClick ()
         {
             cameraRaycaster = FindObjectOfType<CameraRaycaster> ();
-            cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }
 
-
-        void OnMouseClick (RaycastHit raycastHit, int layerHit)
+        void OnMouseOverEnemy (Enemy enemy)
         {
-            if (layerHit == enemyLayer)
+            if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
             {
-                GameObject enemy = raycastHit.collider.gameObject;
-                if (IsTargetInRange(enemy))
-                {
-                    AttackTarget (enemy);
-                }                
+                AttackTarget (enemy);
             }
         }
 
-        private void AttackTarget (GameObject target)
+        private void AttackTarget (Enemy enemy)
         {
-            var enemyComponent = target.GetComponent<Enemy> ();
             if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
             {
                 animator.SetTrigger ("Attack"); // TODO make constant
-                enemyComponent.TakeDamage (damagePerHit);
+                enemy.TakeDamage (damagePerHit);
                 lastHitTime = Time.time;
             }
         }

@@ -12,10 +12,6 @@ namespace RPG.Characters
     [RequireComponent (typeof (AICharacterControl))]
     public class PlayerMovement : MonoBehaviour
     {
-        // TODO Resolve fight between serialize and const
-        [SerializeField] const int walkableLayerNumber = 8;
-        [SerializeField] const int enemyLayerNumber = 9;
-
         CameraRaycaster cameraRaycaster = null;
         AICharacterControl aiCharacterControl = null;
 
@@ -29,11 +25,11 @@ namespace RPG.Characters
             aiCharacterControl = GetComponent<AICharacterControl> ();
             walkTarget = new GameObject ("walkTarget");
 
-            cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick; // Register for Mouse clicks
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable; // Register for Mouse clicks
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy; // Register for Mouse clicks
         }
 
-        private void OnMouseOverPotentiallyWalkable (Vector3 destination)
+        void OnMouseOverPotentiallyWalkable (Vector3 destination)
         {
             if (Input.GetMouseButton(0))
             {
@@ -42,19 +38,12 @@ namespace RPG.Characters
             }           
         }
 
-        void ProcessMouseClick (RaycastHit raycastHit, int layerHit)
+        void OnMouseOverEnemy (Enemy enemy)
         {
-            switch (layerHit)
+            if (Input.GetMouseButton (0) || Input.GetMouseButtonDown(1))
             {
-                case enemyLayerNumber:
-                    GameObject enemy = raycastHit.collider.gameObject;
-                    aiCharacterControl.SetTarget (enemy.transform);
-                    break;
-                default:
-                    Debug.LogWarning ("Can't handle mouse click for player movement");
-                    return;
+                aiCharacterControl.SetTarget (enemy.transform);
             }
-
         }
 
         // TODO Make controller input work again
