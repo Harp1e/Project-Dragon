@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 // TODO Consider re-wire
 using RPG.Core;
 using RPG.Weapons;
