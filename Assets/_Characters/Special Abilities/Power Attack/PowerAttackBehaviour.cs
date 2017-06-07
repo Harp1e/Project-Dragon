@@ -15,7 +15,7 @@ namespace RPG.Characters
 
         void Start ()
         {
-            print ("Power Attack Behaviour 1 attached to " + gameObject.name);
+            print ("Power Attack Behaviour attached to " + gameObject.name);
         }
 
         void Update ()
@@ -23,9 +23,11 @@ namespace RPG.Characters
             
         }
 
-        public void Use ()
+        public void Use (AbilityUseParams useParams)
         {
-            print ("Power Attack used");
+            print ("Power Attack used by: " + gameObject.name);
+            float damageToDeal = useParams.baseDamage + config.GetExtraDamage ();
+            useParams.target.TakeDamage (damageToDeal);
         }
     }
 }
