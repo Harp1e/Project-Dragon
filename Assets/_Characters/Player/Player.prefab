@@ -697,7 +697,8 @@ MonoBehaviour:
     type: 2}
   maxHealthPoints: 1000
   damagePerHit: 50
-  enemyLayer: 9
+  abilities:
+  - {fileID: 11400000, guid: 9183133e64cbd5942832605703ee9ffe, type: 2}
 --- !u!114 &114461706685701848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -711,7 +712,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyBar: {fileID: 0}
   maxEnergyPoints: 100
-  pointsPerHit: 10
 --- !u!114 &114806213314259352
 MonoBehaviour:
   m_ObjectHideFlags: 1

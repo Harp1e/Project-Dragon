@@ -20,7 +20,7 @@ namespace RPG.Characters
         [SerializeField] float damagePerHit = 10f;
 
         // Temporarily serialize for debugging
-        [SerializeField] SpecialAbilityConfig ability1;
+        [SerializeField] SpecialAbilityConfig[] abilities;
 
         Animator animator;
         CameraRaycaster cameraRaycaster;
@@ -37,7 +37,7 @@ namespace RPG.Characters
             SetCurrentMaxHealth ();
             PutWeaponInHand ();
             SetupRuntimeAnimator ();
-            ability1.AddComponent (gameObject);
+            abilities[0].AttachComponentTo (gameObject);
         }
 
         public void TakeDamage (float damage)
@@ -89,17 +89,17 @@ namespace RPG.Characters
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                AttemptSpecialAbility1 (enemy);
+                AttemptSpecialAbility (0, enemy);
             }
         }
 
-        void AttemptSpecialAbility1 (Enemy enemy)
+        void AttemptSpecialAbility (int abilityIndex, Enemy enemy)
         {
             var energyComponent = GetComponent<Energy> ();
             if (energyComponent.IsEnergyAvailable(10f)) // TODO read from SO
             {
                 energyComponent.ConsumeEnergy (10f);    // TODO read from SO
-                // TODO Use the ability
+                abilities[abilityIndex].Use ();
             }
         }
 

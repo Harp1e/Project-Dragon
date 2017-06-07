@@ -25,8 +25,8 @@ namespace RPG.Characters
             aiCharacterControl = GetComponent<AICharacterControl> ();
             walkTarget = new GameObject ("walkTarget");
 
-            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable; // Register for Mouse clicks
-            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy; // Register for Mouse clicks
+            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable; 
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy; 
         }
 
         void OnMouseOverPotentiallyWalkable (Vector3 destination)
