@@ -18,11 +18,6 @@ namespace RPG.Characters
             print ("Power Attack Behaviour attached to " + gameObject.name);
         }
 
-        void Update ()
-        {
-            
-        }
-
         public void Use (AbilityUseParams useParams)
         {
             print ("Power Attack used by: " + gameObject.name);
