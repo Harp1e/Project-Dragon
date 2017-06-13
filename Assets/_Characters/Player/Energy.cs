@@ -7,7 +7,7 @@ namespace RPG.Characters
     {
         [SerializeField] RawImage energyBar = null;
         [SerializeField] float maxEnergyPoints = 100f;
-        [SerializeField] float regenPointsPerSecond = 10f;
+        [SerializeField] float regenPointsPerSecond = 5f;
 
         float currentEnergyPoints;
 
