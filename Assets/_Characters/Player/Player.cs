@@ -74,8 +74,11 @@ namespace RPG.Characters
         void ReduceHealth(float damage)
         {
             currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
-            audioSource.clip = damageSounds[UnityEngine.Random.Range (0, damageSounds.Length)];
-            audioSource.Play ();
+            if (damage > 0)
+            {
+                audioSource.clip = damageSounds[UnityEngine.Random.Range (0, damageSounds.Length)];
+                audioSource.Play ();
+            } 
         }
 
         private void SetCurrentMaxHealth ()
