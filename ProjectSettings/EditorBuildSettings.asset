@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/__Levels/Rick's Village.unity
+    guid: 9cb1adc51b3983f408feea1c0adfd7d7
