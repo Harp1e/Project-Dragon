@@ -18,6 +18,9 @@ namespace RPG.Characters
         [SerializeField] Weapon weaponInUse;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
 
+        [SerializeField] AudioClip[] damageSounds;
+        [SerializeField] AudioClip[] deathSounds;
+
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float baseDamage = 10f;
 
@@ -25,6 +28,7 @@ namespace RPG.Characters
         [SerializeField] SpecialAbility[] abilities;
 
         Animator animator;
+        AudioSource audioSource;
         CameraRaycaster cameraRaycaster;
 
         float currentHealthPoints;
@@ -40,6 +44,7 @@ namespace RPG.Characters
             PutWeaponInHand ();
             SetupRuntimeAnimator ();
             abilities[0].AttachComponentTo (gameObject);
+            audioSource = GetComponent<AudioSource> ();
         }
 
         public void TakeDamage (float damage)
@@ -54,18 +59,18 @@ namespace RPG.Characters
 
         IEnumerator KillPlayer ()
         {
-            Debug.Log ("Dying!");
-            // play sound
+            audioSource.clip = deathSounds[UnityEngine.Random.Range (0, deathSounds.Length)];
+            audioSource.Play ();
             // trigger death anim
-            // Wait For sound
-            yield return new WaitForSecondsRealtime (2f); // TODO use audio clip length
+            yield return new WaitForSecondsRealtime (audioSource.clip.length);
             SceneManager.LoadScene (0);
         }
 
         void ReduceHealth(float damage)
         {
             currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
-            // play sound
+            audioSource.clip = damageSounds[UnityEngine.Random.Range (0, damageSounds.Length)];
+            audioSource.Play ();
         }
 
         private void SetCurrentMaxHealth ()

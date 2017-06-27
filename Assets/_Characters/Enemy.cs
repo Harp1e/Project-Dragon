@@ -22,7 +22,7 @@ namespace RPG.Characters
         [SerializeField] GameObject projectileSocket;
 
         AICharacterControl aiCharacterControl = null;
-        GameObject player = null;
+        Player player = null;
 
         float currentHealthPoints;
         bool isChasing = false;
@@ -42,7 +42,7 @@ namespace RPG.Characters
 
         private void Start ()
         {
-            player = GameObject.FindGameObjectWithTag ("Player");
+            player = FindObjectOfType<Player> ();
             aiCharacterControl = GetComponent<AICharacterControl> ();
             currentHealthPoints = maxHealthPoints;
             chaseStopRadius = chaseRadius;
@@ -50,6 +50,12 @@ namespace RPG.Characters
 
         private void Update ()
         {
+            if (player.healthAsPercentage <= Mathf.Epsilon)
+            {
+                StopAllCoroutines ();
+                Destroy (this);
+            }
+
             float distanceToPlayer = Vector3.Distance (player.transform.position, transform.position);
             if (distanceToPlayer <= chaseRadius || (distanceToPlayer <= chaseStopRadius && isChasing))
             {
