@@ -27,6 +27,9 @@ namespace RPG.Characters
         // Temporarily serialize for debugging
         [SerializeField] SpecialAbility[] abilities;
 
+        const string ATTACK_TRIGGER = "Attack";
+        const string DEATH_TRIGGER = "Death";
+
         Animator animator;
         AudioSource audioSource;
         CameraRaycaster cameraRaycaster;
@@ -59,10 +62,12 @@ namespace RPG.Characters
 
         IEnumerator KillPlayer ()
         {
+            animator.SetTrigger (DEATH_TRIGGER);
+
             audioSource.clip = deathSounds[UnityEngine.Random.Range (0, deathSounds.Length)];
             audioSource.Play ();
-            // trigger death anim
             yield return new WaitForSecondsRealtime (audioSource.clip.length);
+
             SceneManager.LoadScene (0);
         }
 
@@ -137,7 +142,7 @@ namespace RPG.Characters
         {
             if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
             {
-                animator.SetTrigger ("Attack"); // TODO make constant
+                animator.SetTrigger (ATTACK_TRIGGER);
                 enemy.TakeDamage (baseDamage);
                 lastHitTime = Time.time;
             }
