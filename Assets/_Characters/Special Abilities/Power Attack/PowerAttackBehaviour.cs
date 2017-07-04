@@ -15,12 +15,11 @@ namespace RPG.Characters
 
         void Start ()
         {
-            print ("Power Attack Behaviour attached to " + gameObject.name);
+
         }
 
         public void Use (AbilityUseParams useParams)
         {
-            print ("Power Attack used by: " + gameObject.name);
             float damageToDeal = useParams.baseDamage + config.GetExtraDamage ();
             useParams.target.TakeDamage (damageToDeal);
         }
