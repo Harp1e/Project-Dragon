@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace RPG.Characters
     public class PowerAttackBehaviour : MonoBehaviour, ISpecialAbility
     {
         PowerAttackConfig config;
+        AudioSource audioSource = null;
 
         public void SetConfig (PowerAttackConfig configToSet)
         {
@@ -15,13 +17,21 @@ namespace RPG.Characters
 
         void Start ()
         {
-
+            audioSource = GetComponent<AudioSource> ();
         }
 
         public void Use (AbilityUseParams useParams)
         {
             DealDamage (useParams);
             PlayParticleEffect ();
+            PlayAudio ();
+        }
+
+        private void PlayAudio ()
+        {
+            audioSource.clip = config.GetAudioClip ();
+            if (audioSource.clip != null)
+                audioSource.Play ();
         }
 
         private void PlayParticleEffect ()
@@ -36,7 +46,7 @@ namespace RPG.Characters
         private void DealDamage (AbilityUseParams useParams)
         {
             float damageToDeal = useParams.baseDamage + config.GetExtraDamage ();
-            useParams.target.AdjustHealth (damageToDeal);
+            useParams.target.TakeDamage (damageToDeal);
         }
     }
 }
