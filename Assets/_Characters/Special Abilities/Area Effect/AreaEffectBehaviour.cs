@@ -46,7 +46,7 @@ namespace RPG.Characters
                 var damageable = hit.collider.gameObject.GetComponent<IDamageable> ();
                 if (damageable != null)
                 {
-                    damageable.TakeDamage (damageToDeal);
+                    damageable.AdjustHealth (damageToDeal);
                 }
             }
         }

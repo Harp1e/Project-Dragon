@@ -2100,8 +2100,9 @@ MonoBehaviour:
   maxHealthPoints: 1000
   baseDamage: 10
   abilities:
-  - {fileID: 11400000, guid: 4d43e73ee0bfb3748b2d8684a4cc10b9, type: 2}
   - {fileID: 11400000, guid: 9183133e64cbd5942832605703ee9ffe, type: 2}
+  - {fileID: 11400000, guid: 4d43e73ee0bfb3748b2d8684a4cc10b9, type: 2}
+  - {fileID: 11400000, guid: f4cf274e31ef82d419ea2c1eb17ae2d3, type: 2}
 --- !u!114 &114385757433938022
 MonoBehaviour:
   m_ObjectHideFlags: 1
