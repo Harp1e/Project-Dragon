@@ -17,12 +17,15 @@ namespace RPG.Characters
 
         [SerializeField] Weapon weaponInUse;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] ParticleSystem criticalHitParticle = null;
 
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
 
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float baseDamage = 10f;
+        [Range (0.1f, 1.0f)] [SerializeField] float criticalHealthChance = 0.1f;
+        [SerializeField] float criticalHitMultiplier = 1.25f;
 
         // Temporarily serialize for debugging
         [SerializeField] AbilityConfig[] abilities;
@@ -177,8 +180,23 @@ namespace RPG.Characters
             if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
             {
                 animator.SetTrigger (ATTACK_TRIGGER);
-                enemy.TakeDamage (baseDamage);
+                enemy.TakeDamage (CalculateDamage ());
                 lastHitTime = Time.time;
+            }
+        }
+
+        private float CalculateDamage ()
+        {
+            bool isCriticalHit = UnityEngine.Random.Range (0f, 1f) <= criticalHealthChance;
+            float damageBeforeCritical = baseDamage + weaponInUse.GetAdditionalDamage ();
+            if (isCriticalHit)
+            {
+                criticalHitParticle.Play ();
+                return damageBeforeCritical * criticalHitMultiplier;
+            }
+            else
+            {
+                return damageBeforeCritical;
             }
         }
 
