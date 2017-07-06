@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
+using System;
 
 namespace RPG.Characters
 {
@@ -14,14 +15,23 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        void Start ()
-        {
-            print ("Area Effect Behaviour attached to " + gameObject.name);
-        }
-
         public void Use (AbilityUseParams useParams)
         {
-            print ("Area Effect used by: " + gameObject.name);
+            DealRadialDamage (useParams);
+            PlayParticleEffect ();
+        }
+
+        private void PlayParticleEffect ()
+        {
+            var prefab = Instantiate (config.GetParticlePrefab(), transform.position, Quaternion.identity);
+            // TODO Attach to player?
+            ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem> ();
+            myParticleSystem.Play ();
+            Destroy (prefab, myParticleSystem.main.duration);
+        }
+
+        private void DealRadialDamage (AbilityUseParams useParams)
+        {
             RaycastHit[] hits = Physics.SphereCastAll (
                 transform.position,
                 config.GetRadius (),

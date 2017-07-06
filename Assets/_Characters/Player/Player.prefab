@@ -2100,8 +2100,8 @@ MonoBehaviour:
   maxHealthPoints: 1000
   baseDamage: 10
   abilities:
-  - {fileID: 11400000, guid: 9183133e64cbd5942832605703ee9ffe, type: 2}
   - {fileID: 11400000, guid: 4d43e73ee0bfb3748b2d8684a4cc10b9, type: 2}
+  - {fileID: 11400000, guid: 9183133e64cbd5942832605703ee9ffe, type: 2}
 --- !u!114 &114385757433938022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2492,8 +2492,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.22837369, g: 0.7058823, b: 0.29094386, a: 1}
-      maxColor: {r: 0.5661765, g: 0.8743408, b: 1, a: 1}
+      minColor: {r: 0.14305796, g: 0.7205882, b: 0.21873441, a: 1}
+      maxColor: {r: 0.36764705, g: 0.8168357, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2555,7 +2555,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.3
+      scalar: 2
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
