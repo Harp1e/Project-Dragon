@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 124051843534777664}
   - component: {fileID: 81720850478659390}
   - component: {fileID: 114756744341243290}
-  - component: {fileID: 114858650887727554}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -54,8 +53,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1957361829007698}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.49272385, z: -0, w: 0.8701858}
+  m_LocalPosition: {x: 8.628733, y: 0.52, z: -5.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4857302121834942}
@@ -68,13 +67,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1025531952764710}
-  m_LocalRotation: {x: 0.27930123, y: -0.37105903, z: 0.13728471, w: 0.87490517}
-  m_LocalPosition: {x: 4.67, y: 5.17, z: -3.1}
+  m_LocalRotation: {x: 0.33295664, y: -0.009384482, z: 0.021330861, w: 0.94265413}
+  m_LocalPosition: {x: -0.47, y: 5.06, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4364588870343174}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 36.2, y: -45.2, z: 2.34}
+  m_LocalEulerAnglesHint: {x: 38.912003, y: -0.257, z: 2.502}
 --- !u!20 &20752524791151438
 Camera:
   m_ObjectHideFlags: 1
@@ -136,23 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02853f5d34bd8f429969ac34c466d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPriorities: 0900000008000000
   walkCursor: {fileID: 2800000, guid: c82388e8676a2b54a90d17c8d2cf3489, type: 3}
   enemyCursor: {fileID: 2800000, guid: bd27920bd7550a349bef17dbde138669, type: 3}
-  cursorHotspot: {x: 0, y: 0}
---- !u!114 &114858650887727554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1025531952764710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b65f76d9d3a0b749a613f0a8f7413f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCursor: {fileID: 2800000, guid: bd27920bd7550a349bef17dbde138669, type: 3}
-  unknownCursor: {fileID: 2800000, guid: bc20ab31069859c4a916b1f7240201b7, type: 3}
   cursorHotspot: {x: 0, y: 0}
 --- !u!114 &114886558481615548
 MonoBehaviour:
