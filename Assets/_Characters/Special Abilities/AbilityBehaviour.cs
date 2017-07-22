@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Characters
@@ -22,20 +21,24 @@ namespace RPG.Characters
                 particlePrefab, 
                 transform.position, 
                 particlePrefab.transform.rotation
-                );
+                ).GetComponent<ParticleSystem>();
             particleObject.transform.parent = transform;
-            particleObject.GetComponent<ParticleSystem> ().Play();
+            particleObject.Play();
             StartCoroutine (DestroyParticleWhenFinished (particleObject));
         }
 
-        IEnumerator DestroyParticleWhenFinished (GameObject particlePrefab)
+        IEnumerator DestroyParticleWhenFinished (ParticleSystem particleObject)
         {
-            while (particlePrefab.GetComponent<ParticleSystem>().isPlaying)
-            {
-                yield return new WaitForSeconds (10f);
-            }
-            Destroy (particlePrefab);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitWhile (() => particleObject.IsAlive ());
+            Destroy (particleObject.gameObject);
+            //yield return new WaitForEndOfFrame();
+        }
+
+        protected void PlayAbilitySound ()
+        {
+            var abilitySound = config.GetRandomAbilitySound ();
+            var audioSource = GetComponent<AudioSource> ();
+            audioSource.PlayOneShot (abilitySound);
         }
     }
 }
