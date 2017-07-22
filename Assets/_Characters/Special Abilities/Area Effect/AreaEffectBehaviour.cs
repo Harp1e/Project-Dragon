@@ -8,13 +8,8 @@ namespace RPG.Characters
 {
     public class AreaEffectBehaviour : AbilityBehaviour
     {
-        AreaEffectConfig config;
         AudioSource audioSource = null;
 
-        public void SetConfig (AreaEffectConfig configToSet)
-        {
-            this.config = configToSet;
-        }
 
         private void Start ()
         {
@@ -35,26 +30,16 @@ namespace RPG.Characters
                 audioSource.Play ();
         }
 
-        private void PlayParticleEffect ()
-        {
-            var particlePrefab = config.GetParticlePrefab ();
-            var prefab = Instantiate (particlePrefab, transform.position, particlePrefab.transform.rotation);
-            prefab.transform.parent = transform;
-            ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem> ();
-            myParticleSystem.Play ();
-            Destroy (prefab, myParticleSystem.main.duration);
-        }
-
         private void DealRadialDamage (AbilityUseParams useParams)
         {
             RaycastHit[] hits = Physics.SphereCastAll (
                 transform.position,
-                config.GetRadius (),
+                (config as AreaEffectConfig).GetRadius (),
                 Vector3.up,
-                config.GetRadius ()
+                (config as AreaEffectConfig).GetRadius ()
                 );
 
-            float damageToDeal = useParams.baseDamage + config.GetDamageToEachTarget ();
+            float damageToDeal = useParams.baseDamage + (config as AreaEffectConfig).GetDamageToEachTarget ();
 
             foreach (RaycastHit hit in hits)
             {
