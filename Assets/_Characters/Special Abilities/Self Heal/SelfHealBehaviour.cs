@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RPG.Characters
 {
-    public class SelfHealBehaviour : MonoBehaviour, ISpecialAbility
+    public class SelfHealBehaviour : AbilityBehaviour
     {
         SelfHealConfig config = null;
         Player player = null;
@@ -16,7 +16,7 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public void Use (AbilityUseParams useParams)
+        public override void Use (AbilityUseParams useParams)
         {
             ApplyHealth (useParams);
             PlayParticleEffect ();
