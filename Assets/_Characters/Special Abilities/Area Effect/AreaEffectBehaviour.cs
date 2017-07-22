@@ -37,7 +37,8 @@ namespace RPG.Characters
 
         private void PlayParticleEffect ()
         {
-            var prefab = Instantiate (config.GetParticlePrefab(), transform.position, Quaternion.identity);
+            var particlePrefab = config.GetParticlePrefab ();
+            var prefab = Instantiate (particlePrefab, transform.position, particlePrefab.transform.rotation);
             // TODO Attach to player?
             ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem> ();
             myParticleSystem.Play ();
