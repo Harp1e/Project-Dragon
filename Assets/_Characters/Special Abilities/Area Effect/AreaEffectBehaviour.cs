@@ -39,7 +39,7 @@ namespace RPG.Characters
         {
             var particlePrefab = config.GetParticlePrefab ();
             var prefab = Instantiate (particlePrefab, transform.position, particlePrefab.transform.rotation);
-            // TODO Attach to player?
+            prefab.transform.parent = transform;
             ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem> ();
             myParticleSystem.Play ();
             Destroy (prefab, myParticleSystem.main.duration);
