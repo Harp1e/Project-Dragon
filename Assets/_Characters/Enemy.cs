@@ -5,13 +5,11 @@ using RPG.Core;
 
 namespace RPG.Characters
 {
-    [RequireComponent (typeof (AICharacterControl))]
     public class Enemy : MonoBehaviour, IDamageable
     {
 
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float chaseRadius = 5f;
-        float chaseStopRadius = 5f;
 
         [SerializeField] float attackRadius = 4f;
         [SerializeField] float damagePerShot = 9f;
@@ -22,11 +20,9 @@ namespace RPG.Characters
         [SerializeField] GameObject projectileToUse;
         [SerializeField] GameObject projectileSocket;
 
-        AICharacterControl aiCharacterControl = null;
         Player player = null;
 
         float currentHealthPoints;
-        bool isChasing = false;
         bool isAttacking = false;
 
         public float healthAsPercentage
@@ -44,9 +40,7 @@ namespace RPG.Characters
         private void Start ()
         {
             player = FindObjectOfType<Player> ();
-            aiCharacterControl = GetComponent<AICharacterControl> ();
             currentHealthPoints = maxHealthPoints;
-            chaseStopRadius = chaseRadius;
         }
 
         private void Update ()
@@ -58,15 +52,13 @@ namespace RPG.Characters
             }
 
             float distanceToPlayer = Vector3.Distance (player.transform.position, transform.position);
-            if (distanceToPlayer <= chaseRadius || (distanceToPlayer <= chaseStopRadius && isChasing))
+            if (distanceToPlayer <= chaseRadius)
             {
-                aiCharacterControl.SetTarget (player.transform);
-                isChasing = true;
+                //aiCharacterControl.SetTarget (player.transform);
             }
             else
             {
-                aiCharacterControl.SetTarget (transform);
-                isChasing = false;
+                //aiCharacterControl.SetTarget (transform);
             }
             if (distanceToPlayer <= attackRadius && !isAttacking)
             {
@@ -100,10 +92,6 @@ namespace RPG.Characters
             // Draw chase sphere
             Gizmos.color = new Color (0f, 0f, 255f, 0.7f);
             Gizmos.DrawWireSphere (transform.position, chaseRadius);
-
-            // Draw chaseStop sphere
-            Gizmos.color = new Color (0f, 255f, 255f, 0.7f);
-            Gizmos.DrawWireSphere (transform.position, chaseStopRadius);
 
             // Draw attack sphere
             Gizmos.color = new Color (255f, 0f, 0f, 0.7f);
