@@ -22,8 +22,8 @@ namespace RPG.Characters
 //            walkTarget = new GameObject ("walkTarget");
 
             agent = GetComponent<NavMeshAgent> ();
-            agent.updatePosition = false;
-            agent.updateRotation = true;
+            agent.updatePosition = true;
+            agent.updateRotation = false;
             agent.stoppingDistance = stoppingDistance;
 
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
