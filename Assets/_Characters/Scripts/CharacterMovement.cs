@@ -50,6 +50,11 @@ namespace RPG.Characters
             }
         }
 
+        public void Kill ()
+        {
+            // To allow death signaling
+        }
+
         void Move (Vector3 movement)
         {
             SetForwardAndTurn (movement);
