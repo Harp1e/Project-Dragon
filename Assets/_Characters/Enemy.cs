@@ -5,11 +5,8 @@ using RPG.Core;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IDamageable // TODO Remove IDamageable
     {
-
-        [SerializeField] float chaseRadius = 5f;
-
         [SerializeField] float attackRadius = 4f;
         [SerializeField] float damagePerShot = 9f;
         [SerializeField] float firingPeriodInSecs = 0.5f;
@@ -30,16 +27,8 @@ namespace RPG.Characters
 
         private void Update ()
         {
-
             float distanceToPlayer = Vector3.Distance (player.transform.position, transform.position);
-            if (distanceToPlayer <= chaseRadius)
-            {
-                //aiCharacterControl.SetTarget (player.transform);
-            }
-            else
-            {
-                //aiCharacterControl.SetTarget (transform);
-            }
+
             if (distanceToPlayer <= attackRadius && !isAttacking)
             {
                 isAttacking = true;
@@ -52,6 +41,11 @@ namespace RPG.Characters
                 isAttacking = false;
                 CancelInvoke ();
             }
+        }
+
+        public void TakeDamage (float amount)
+        {
+            // TODO Remove
         }
 
         // TODO separate out character firing logic 
@@ -69,10 +63,6 @@ namespace RPG.Characters
 
         private void OnDrawGizmos ()
         {
-            // Draw chase sphere
-            Gizmos.color = new Color (0f, 0f, 255f, 0.7f);
-            Gizmos.DrawWireSphere (transform.position, chaseRadius);
-
             // Draw attack sphere
             Gizmos.color = new Color (255f, 0f, 0f, 0.7f);
             Gizmos.DrawWireSphere (transform.position, attackRadius);

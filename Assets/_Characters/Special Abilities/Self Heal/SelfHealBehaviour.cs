@@ -7,7 +7,7 @@ namespace RPG.Characters
 {
     public class SelfHealBehaviour : AbilityBehaviour
     {
-        Player player = null;
+        Player player;
 
         public override void Use (AbilityUseParams useParams)
         {
@@ -23,7 +23,8 @@ namespace RPG.Characters
 
         private void ApplyHealth (AbilityUseParams useParams)
         {
-            player.Heal ((config as SelfHealConfig).GetExtraHealth ());           
+            var playerHealth = player.GetComponent<HealthSystem> ();
+            playerHealth.Heal ((config as SelfHealConfig).GetExtraHealth ());           
         }
     }
 }

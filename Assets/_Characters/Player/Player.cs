@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
 
 // TODO Consider re-wiring
 using RPG.CameraUI;
@@ -28,9 +27,9 @@ namespace RPG.Characters
         const string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT_ATTACK";
 
-        Animator animator = null;
-        CameraRaycaster cameraRaycaster = null;
-        Enemy enemy = null;
+        Animator animator;
+        CameraRaycaster cameraRaycaster;
+        Enemy enemy;
         GameObject weaponObject;
 
         float lastHitTime = 0f;
@@ -64,7 +63,11 @@ namespace RPG.Characters
 
         private void Update ()
         {
-
+            var healthPercentage = GetComponent<HealthSystem> ().healthAsPercentage;
+            if (healthPercentage > Mathf.Epsilon)
+            {
+                ScanForAbilityKeyDown ();
+            }
         }
 
         private void ScanForAbilityKeyDown ()
