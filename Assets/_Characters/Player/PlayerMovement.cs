@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Assertions;
-
-// TODO Consider re-wiring
 using RPG.CameraUI;
-using RPG.Core;
 
+// TODO Extract WeaponSystem 
 namespace RPG.Characters
 {
-    public class Player : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
 
         [SerializeField] Weapon currentWeaponConfig;
@@ -26,6 +21,7 @@ namespace RPG.Characters
         const string DEFAULT_ATTACK = "DEFAULT_ATTACK";
 
         Animator animator;
+        Character character;
         SpecialAbilities abilities;
         CameraRaycaster cameraRaycaster;
         Enemy enemy;
@@ -35,14 +31,28 @@ namespace RPG.Characters
 
         void Start ()
         {
+            character = GetComponent<Character> ();
             abilities = GetComponent<SpecialAbilities> ();
 
-            RegisterForMouseClick ();
-            PutWeaponInHand (currentWeaponConfig);
-            SetAttackAnimation ();
+            RegisterForMouseEvents ();
+            PutWeaponInHand (currentWeaponConfig);  // TODO Move to WeaponSystem
+            SetAttackAnimation ();  // TODO Move to WeaponSystem
         }
 
-        public void PutWeaponInHand (Weapon weaponToUse)
+        void RegisterForMouseEvents ()
+        {
+            cameraRaycaster = FindObjectOfType<CameraRaycaster> ();
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
+            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
+        }
+
+        void Update ()
+        {
+            ScanForAbilityKeyDown ();
+        }
+
+        // TODO Move to WeaponSystem
+        public void PutWeaponInHand (Weapon weaponToUse)    
         {
             currentWeaponConfig = weaponToUse;
             var weaponPrefab = weaponToUse.GetWeaponPrefab ();
@@ -51,15 +61,6 @@ namespace RPG.Characters
             weaponObject = Instantiate (weaponPrefab, dominantHand.transform);
             weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
             weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
-        }
-
-        private void Update ()
-        {
-            var healthPercentage = GetComponent<HealthSystem> ().healthAsPercentage;
-            if (healthPercentage > Mathf.Epsilon)
-            {
-                ScanForAbilityKeyDown ();
-            }
         }
 
         void ScanForAbilityKeyDown ()
@@ -73,14 +74,15 @@ namespace RPG.Characters
             }
         }
 
-
-        private void SetAttackAnimation ()
+        // TODO Move to WeaponSystem
+        void SetAttackAnimation ()
         {
             animator = GetComponent<Animator>();
             animator.runtimeAnimatorController = animatorOverrideController;
             animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip ();    // TODO Remove constant
         }
 
+        // TODO Move to WeaponSystem
         private GameObject RequestDominantHand ()
         {
             var dominantHands = GetComponentsInChildren<DominantHand> ();
@@ -88,12 +90,6 @@ namespace RPG.Characters
             Assert.IsFalse (numberOfDominantHands <= 0, "No DominantHand found on Player. Please add one.");
             Assert.IsFalse (numberOfDominantHands > 1, "Multiple DominantHand scripts found on Player. Please remove all but one.");
             return dominantHands[0].gameObject;
-        }
-
-        void RegisterForMouseClick ()
-        {
-            cameraRaycaster = FindObjectOfType<CameraRaycaster> ();
-            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }
 
         void OnMouseOverEnemy (Enemy enemyToSet)
@@ -109,7 +105,16 @@ namespace RPG.Characters
             }
         }
 
-        private void AttackTarget ()
+        void OnMouseOverPotentiallyWalkable (Vector3 destination)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                character.SetDestination (destination);
+            }
+        }
+
+        // TODO use coroutines for move & attack
+        void AttackTarget ()
         {
             if (Time.time - lastHitTime > currentWeaponConfig.GetMinTimeBetweenHits())
             {
@@ -120,7 +125,8 @@ namespace RPG.Characters
             }
         }
 
-        private float CalculateDamage ()
+        // TODO Move to WeaponSystem
+        float CalculateDamage ()
         {
             bool isCriticalHit = UnityEngine.Random.Range (0f, 1f) <= criticalHealthChance;
             float damageBeforeCritical = baseDamage + currentWeaponConfig.GetAdditionalDamage ();
@@ -135,7 +141,7 @@ namespace RPG.Characters
             }
         }
 
-        private bool IsTargetInRange (GameObject target)
+        bool IsTargetInRange (GameObject target)
         {
             float distanceToTarget = (target.transform.position - transform.position).magnitude;
             {

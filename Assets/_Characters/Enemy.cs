@@ -16,13 +16,13 @@ namespace RPG.Characters
         [SerializeField] GameObject projectileToUse;
         [SerializeField] GameObject projectileSocket;
 
-        Player player = null;
+        PlayerMovement player = null;
 
         bool isAttacking = false;
 
         private void Start ()
         {
-            player = FindObjectOfType<Player> ();
+            player = FindObjectOfType<PlayerMovement> ();
         }
 
         private void Update ()
