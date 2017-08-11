@@ -9,9 +9,9 @@ namespace RPG.Characters
     {
         Player player;
 
-        public override void Use (AbilityUseParams useParams)
+        public override void Use (GameObject target)
         {
-            ApplyHealth (useParams);
+            ApplyHealth ();
             PlayParticleEffect ();
             PlayAbilitySound ();
         }
@@ -21,7 +21,7 @@ namespace RPG.Characters
             player = GetComponent<Player> ();
         }
 
-        private void ApplyHealth (AbilityUseParams useParams)
+        private void ApplyHealth ()
         {
             var playerHealth = player.GetComponent<HealthSystem> ();
             playerHealth.Heal ((config as SelfHealConfig).GetExtraHealth ());           

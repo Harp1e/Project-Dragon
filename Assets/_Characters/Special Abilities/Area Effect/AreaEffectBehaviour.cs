@@ -8,14 +8,14 @@ namespace RPG.Characters
 {
     public class AreaEffectBehaviour : AbilityBehaviour
     {
-        public override void Use (AbilityUseParams useParams)
+        public override void Use (GameObject target)
         {
-            DealRadialDamage (useParams);
+            DealRadialDamage ();
             PlayParticleEffect ();
             PlayAbilitySound ();
         }
 
-        private void DealRadialDamage (AbilityUseParams useParams)
+        private void DealRadialDamage ()
         {
             RaycastHit[] hits = Physics.SphereCastAll (
                 transform.position,
@@ -24,7 +24,7 @@ namespace RPG.Characters
                 (config as AreaEffectConfig).GetRadius ()
                 );
 
-            float damageToDeal = useParams.baseDamage + (config as AreaEffectConfig).GetDamageToEachTarget ();
+            float damageToDeal = (config as AreaEffectConfig).GetDamageToEachTarget ();
 
             foreach (RaycastHit hit in hits)
             {
