@@ -5,7 +5,7 @@ using RPG.Core;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamageable // TODO Remove IDamageable
+    public class Enemy : MonoBehaviour
     {
         [SerializeField] float attackRadius = 4f;
         [SerializeField] float damagePerShot = 9f;
