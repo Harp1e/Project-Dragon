@@ -1961,6 +1961,7 @@ MonoBehaviour:
   energyBar: {fileID: 0}
   maxEnergyPoints: 100
   regenPointsPerSecond: 5
+  audioClip: {fileID: 8300000, guid: 262734eadc4e5bc459e6c814e33b0651, type: 3}
 --- !u!114 &114573430709999994
 MonoBehaviour:
   m_ObjectHideFlags: 1
