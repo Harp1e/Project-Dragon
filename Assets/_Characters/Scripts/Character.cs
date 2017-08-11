@@ -5,9 +5,21 @@ using RPG.CameraUI;
 
 namespace RPG.Characters
 {
+    [SelectionBase]
     [RequireComponent (typeof (NavMeshAgent))]
-    public class CharacterMovement : MonoBehaviour
+    public class Character : MonoBehaviour
     {
+        [Header ("Animator")]
+        [SerializeField] RuntimeAnimatorController animatorController;
+        [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] Avatar characterAvatar;
+
+        [Header ("Capsule Collider")]
+        [SerializeField] Vector3 colliderCenter = new Vector3 (0f, 1.03f, 0f);
+        [SerializeField] float colliderRadius = 0.2f;
+        [SerializeField] float colliderHeight = 2.03f;
+
+        [Header ("Movement")]
         [SerializeField] float stoppingDistance = 1f;
         [SerializeField] float moveSpeedMultiplier = 0.7f;
         [SerializeField] float animatorSpeedMultiplier = 1.5f;
@@ -22,12 +34,28 @@ namespace RPG.Characters
         float turnAmount;
         float forwardAmount;
 
+        void Awake ()
+        {
+            AddRequiredComponents ();
+        }
+
+        private void AddRequiredComponents ()
+        {
+            animator = gameObject.AddComponent<Animator> ();
+            animator.runtimeAnimatorController = animatorController;
+            animator.avatar = characterAvatar;
+
+            var capsuleCollider = gameObject.AddComponent<CapsuleCollider> ();
+            capsuleCollider.center = colliderCenter;
+            capsuleCollider.radius = colliderRadius;
+            capsuleCollider.height = colliderHeight;
+        }
+
         void Start ()
         {
             CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster> ();
             myRigidbody = GetComponent<Rigidbody> ();
-            myRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-            animator = GetComponent<Animator> ();
+            myRigidbody.constraints = RigidbodyConstraints.FreezeRotation;          
 
             agent = GetComponent<NavMeshAgent> ();
             agent.updatePosition = true;
