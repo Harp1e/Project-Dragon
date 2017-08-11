@@ -1386,13 +1386,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098832729329144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.6977594, y: -0.000000059604638, z: 0.000000119209275, w: 0.71633226}
+  m_LocalPosition: {x: 0, y: 0.003, z: -0.126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4343006438725202}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -88.495, y: -0.001, z: 0.001}
 --- !u!4 &4589100937389948
 Transform:
   m_ObjectHideFlags: 1
@@ -1932,10 +1932,6 @@ MonoBehaviour:
   baseDamage: 10
   criticalHealthChance: 0.1
   criticalHitMultiplier: 1.25
-  abilities:
-  - {fileID: 11400000, guid: 9183133e64cbd5942832605703ee9ffe, type: 2}
-  - {fileID: 11400000, guid: 4d43e73ee0bfb3748b2d8684a4cc10b9, type: 2}
-  - {fileID: 11400000, guid: f4cf274e31ef82d419ea2c1eb17ae2d3, type: 2}
 --- !u!114 &114385757433938022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1958,7 +1954,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d9375543b832040b82e6d98175b02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyOrb: {fileID: 0}
+  abilities:
+  - {fileID: 11400000, guid: 9183133e64cbd5942832605703ee9ffe, type: 2}
+  - {fileID: 11400000, guid: 4d43e73ee0bfb3748b2d8684a4cc10b9, type: 2}
+  - {fileID: 11400000, guid: f4cf274e31ef82d419ea2c1eb17ae2d3, type: 2}
+  energyBar: {fileID: 0}
   maxEnergyPoints: 100
   regenPointsPerSecond: 5
 --- !u!114 &114573430709999994
@@ -2189,15 +2189,15 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1005886080
+  randomSeed: -1973772693
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 5
-      minScalar: 0
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2236,9 +2236,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
-      minScalar: 0
+      minMaxState: 3
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2279,7 +2279,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.7208925, b: 0.36764705, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2340,9 +2340,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 0
+      minMaxState: 3
+      scalar: 0.3
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2381,7 +2381,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -2422,7 +2422,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -2633,7 +2633,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 25
+    angle: 7.53
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -2654,7 +2654,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.2
       mode: 0
       spread: 0
       speed:
@@ -2699,7 +2699,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 338.13
       mode: 0
       spread: 0
       speed:
@@ -3665,7 +3665,7 @@ ParticleSystem:
     inWorldSpace: 0
     dampen: 1
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -3790,7 +3790,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.5
+    frequency: 0.74
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
