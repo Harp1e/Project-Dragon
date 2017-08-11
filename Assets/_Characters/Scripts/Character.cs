@@ -6,7 +6,6 @@ using RPG.CameraUI;
 namespace RPG.Characters
 {
     [SelectionBase]
-    [RequireComponent (typeof (NavMeshAgent))]
     public class Character : MonoBehaviour
     {
         [Header ("Animator")]
@@ -14,21 +13,28 @@ namespace RPG.Characters
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] Avatar characterAvatar;
 
+        [Header ("AudioSource")]
+        [Range (0, 1)][SerializeField] float audioVolume = 1f;
+        [Range(0,1)][SerializeField] float audioSpatialBlend = 0.5f;
+
         [Header ("Capsule Collider")]
         [SerializeField] Vector3 colliderCenter = new Vector3 (0f, 1.03f, 0f);
         [SerializeField] float colliderRadius = 0.2f;
         [SerializeField] float colliderHeight = 2.03f;
 
         [Header ("Movement")]
-        [SerializeField] float stoppingDistance = 1f;
         [SerializeField] float moveSpeedMultiplier = 0.7f;
         [SerializeField] float animatorSpeedMultiplier = 1.5f;
         [SerializeField] float movingTurnSpeed = 360;
         [SerializeField] float stationaryTurnSpeed = 180;
         [SerializeField] float moveThreshold = 1f;
 
+        [Header ("NavMesh Agent")]
+        [SerializeField] float navMeshAgentSteeringSpeed = 1f;
+        [SerializeField] float navMeshAgentStoppingDistance = 1f;
+
         Rigidbody myRigidbody;
-        NavMeshAgent agent;
+        NavMeshAgent navMeshAgent;
         Animator animator;
 
         float turnAmount;
@@ -45,22 +51,32 @@ namespace RPG.Characters
             animator.runtimeAnimatorController = animatorController;
             animator.avatar = characterAvatar;
 
+            var audioSource = gameObject.AddComponent<AudioSource> ();
+            audioSource.volume = audioVolume;
+            audioSource.spatialBlend = audioSpatialBlend;
+            audioSource.playOnAwake = false;
+
             var capsuleCollider = gameObject.AddComponent<CapsuleCollider> ();
             capsuleCollider.center = colliderCenter;
             capsuleCollider.radius = colliderRadius;
             capsuleCollider.height = colliderHeight;
+
+            navMeshAgent = gameObject.AddComponent<NavMeshAgent> ();
+            navMeshAgent.speed = navMeshAgentSteeringSpeed;
+            navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
+            navMeshAgent.autoBraking = false;
+            navMeshAgent.updatePosition = true;
+            navMeshAgent.updateRotation = false;
+
+            myRigidbody = gameObject.AddComponent<Rigidbody> ();
+            myRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
         }
 
         void Start ()
         {
             CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster> ();
-            myRigidbody = GetComponent<Rigidbody> ();
-            myRigidbody.constraints = RigidbodyConstraints.FreezeRotation;          
 
-            agent = GetComponent<NavMeshAgent> ();
-            agent.updatePosition = true;
-            agent.updateRotation = false;
-            agent.stoppingDistance = stoppingDistance;
 
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
             cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
@@ -68,9 +84,9 @@ namespace RPG.Characters
 
         void Update ()
         {
-            if (agent.remainingDistance > agent.stoppingDistance)
+            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
-                Move (agent.desiredVelocity);
+                Move (navMeshAgent.desiredVelocity);
             }
             else
             {
@@ -117,19 +133,21 @@ namespace RPG.Characters
             transform.Rotate (0, turnAmount * turnSpeed * Time.deltaTime, 0);
         }
 
+        // TODO Move to Player Controller
         void OnMouseOverPotentiallyWalkable (Vector3 destination)
         {
             if (Input.GetMouseButton (0))
             {
-                agent.SetDestination (destination);
+                navMeshAgent.SetDestination (destination);
             }
         }
 
+        // TODO Move to Player Controller
         void OnMouseOverEnemy (Enemy enemy)
         {
             if (Input.GetMouseButton (0) || Input.GetMouseButtonDown (1))
             {
-                agent.SetDestination (enemy.transform.position);
+                navMeshAgent.SetDestination (enemy.transform.position);
             }
         }
 
