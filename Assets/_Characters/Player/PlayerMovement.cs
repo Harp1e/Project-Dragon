@@ -9,7 +9,6 @@ namespace RPG.Characters
     {
 
         [SerializeField] Weapon currentWeaponConfig;
-        [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] ParticleSystem criticalHitParticle;
 
         [SerializeField] float baseDamage = 10f;
@@ -20,6 +19,7 @@ namespace RPG.Characters
         const string DEFAULT_ATTACK = "DEFAULT_ATTACK";
 
         Animator animator;
+        AnimatorOverrideController animatorOverrideController;
         Character character;
         SpecialAbilities abilities;
         CameraRaycaster cameraRaycaster;
@@ -32,7 +32,7 @@ namespace RPG.Characters
         {
             character = GetComponent<Character> ();
             abilities = GetComponent<SpecialAbilities> ();
-
+            animatorOverrideController = character.GetAnimatorOverrideController();
             RegisterForMouseEvents ();
             WeaponSetup ();         // TODO Move to WeaponSystem  
         }
@@ -46,7 +46,10 @@ namespace RPG.Characters
 
         void Update ()
         {
-            ScanForAbilityKeyDown ();
+            if (abilities != null)
+            {
+                ScanForAbilityKeyDown ();
+            }
         }
 
         void ScanForAbilityKeyDown ()

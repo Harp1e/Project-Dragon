@@ -1949,8 +1949,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeaponConfig: {fileID: 11400000, guid: 98317674cefb29d46809897d55fb53d5,
     type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: cbcfd0a0148a45e4e8276ecf23f9bf0b,
-    type: 2}
   criticalHitParticle: {fileID: 198201950469671158}
   baseDamage: 10
   criticalHealthChance: 0.1
@@ -1973,7 +1971,7 @@ MonoBehaviour:
   energyBar: {fileID: 0}
   maxEnergyPoints: 100
   regenPointsPerSecond: 5
-  outOfEnergy: {fileID: 0}
+  outOfEnergy: {fileID: 8300000, guid: 262734eadc4e5bc459e6c814e33b0651, type: 3}
 --- !u!114 &114573430709999994
 MonoBehaviour:
   m_ObjectHideFlags: 1

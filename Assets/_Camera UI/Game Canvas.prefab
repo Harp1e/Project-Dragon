@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 224631833235819434}
   - component: {fileID: 222433427626284930}
   - component: {fileID: 114614581392334888}
-  - component: {fileID: 114622075671870880}
   m_Layer: 5
   m_Name: Health Orb
   m_TagString: Untagged
@@ -507,17 +506,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114622075671870880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1302576284033128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e94587b07b71f154f861d927f993fe9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114623647165576938
 MonoBehaviour:
   m_ObjectHideFlags: 1
