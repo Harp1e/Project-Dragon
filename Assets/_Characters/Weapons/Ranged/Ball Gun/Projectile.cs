@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using RPG.Core;
+﻿using UnityEngine;
 
 namespace RPG.Characters
 {
@@ -9,9 +6,10 @@ namespace RPG.Characters
     {
 
         [SerializeField] float projectileSpeed;
-        [SerializeField] GameObject shooter;        // For inspection when paused
 
         const float DESTROY_DELAY = 0.01f;
+
+        GameObject shooter;
         float damageCaused;
 
         public float GetDefaultLaunchSpeed ()

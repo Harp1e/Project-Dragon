@@ -10,12 +10,11 @@ namespace RPG.Characters
 
         [SerializeField] Weapon currentWeaponConfig;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
-        [SerializeField] ParticleSystem criticalHitParticle = null;
+        [SerializeField] ParticleSystem criticalHitParticle;
 
         [SerializeField] float baseDamage = 10f;
         [Range (0.1f, 1.0f)] [SerializeField] float criticalHealthChance = 0.1f;
         [SerializeField] float criticalHitMultiplier = 1.25f;
-
 
         const string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT_ATTACK";
@@ -35,8 +34,7 @@ namespace RPG.Characters
             abilities = GetComponent<SpecialAbilities> ();
 
             RegisterForMouseEvents ();
-            PutWeaponInHand (currentWeaponConfig);  // TODO Move to WeaponSystem
-            SetAttackAnimation ();  // TODO Move to WeaponSystem
+            WeaponSetup ();         // TODO Move to WeaponSystem  
         }
 
         void RegisterForMouseEvents ()
@@ -51,18 +49,6 @@ namespace RPG.Characters
             ScanForAbilityKeyDown ();
         }
 
-        // TODO Move to WeaponSystem
-        public void PutWeaponInHand (Weapon weaponToUse)    
-        {
-            currentWeaponConfig = weaponToUse;
-            var weaponPrefab = weaponToUse.GetWeaponPrefab ();
-            GameObject dominantHand = RequestDominantHand ();
-            Destroy (weaponObject);
-            weaponObject = Instantiate (weaponPrefab, dominantHand.transform);
-            weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
-            weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
-        }
-
         void ScanForAbilityKeyDown ()
         {
             for (int keyIndex = 1; keyIndex < abilities.GetNumberOfAbilities(); keyIndex++)
@@ -72,24 +58,6 @@ namespace RPG.Characters
                     abilities.AttemptSpecialAbility (keyIndex);
                 }
             }
-        }
-
-        // TODO Move to WeaponSystem
-        void SetAttackAnimation ()
-        {
-            animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = animatorOverrideController;
-            animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip ();    // TODO Remove constant
-        }
-
-        // TODO Move to WeaponSystem
-        private GameObject RequestDominantHand ()
-        {
-            var dominantHands = GetComponentsInChildren<DominantHand> ();
-            int numberOfDominantHands = dominantHands.Length;
-            Assert.IsFalse (numberOfDominantHands <= 0, "No DominantHand found on Player. Please add one.");
-            Assert.IsFalse (numberOfDominantHands > 1, "Multiple DominantHand scripts found on Player. Please remove all but one.");
-            return dominantHands[0].gameObject;
         }
 
         void OnMouseOverEnemy (Enemy enemyToSet)
@@ -111,6 +79,51 @@ namespace RPG.Characters
             {
                 character.SetDestination (destination);
             }
+        }
+
+        bool IsTargetInRange (GameObject target)
+        {
+            float distanceToTarget = (target.transform.position - transform.position).magnitude;
+            {
+                return distanceToTarget <= currentWeaponConfig.GetMaxAttackRange ();
+            }
+        }
+
+        // TODO Move to WeaponSystem
+        void WeaponSetup ()
+        {
+            PutWeaponInHand (currentWeaponConfig); 
+            SetAttackAnimation ();  
+        }
+
+        // TODO Move to WeaponSystem
+        public void PutWeaponInHand (Weapon weaponToUse)
+        {
+            currentWeaponConfig = weaponToUse;
+            var weaponPrefab = weaponToUse.GetWeaponPrefab ();
+            GameObject dominantHand = RequestDominantHand ();
+            Destroy (weaponObject);
+            weaponObject = Instantiate (weaponPrefab, dominantHand.transform);
+            weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
+            weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
+        }
+
+        // TODO Move to WeaponSystem
+        void SetAttackAnimation ()
+        {
+            animator = GetComponent<Animator> ();
+            animator.runtimeAnimatorController = animatorOverrideController;
+            animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip ();    // TODO Remove constant
+        }
+
+        // TODO Move to WeaponSystem
+        private GameObject RequestDominantHand ()
+        {
+            var dominantHands = GetComponentsInChildren<DominantHand> ();
+            int numberOfDominantHands = dominantHands.Length;
+            Assert.IsFalse (numberOfDominantHands <= 0, "No DominantHand found on Player. Please add one.");
+            Assert.IsFalse (numberOfDominantHands > 1, "Multiple DominantHand scripts found on Player. Please remove all but one.");
+            return dominantHands[0].gameObject;
         }
 
         // TODO use coroutines for move & attack
@@ -140,14 +153,5 @@ namespace RPG.Characters
                 return damageBeforeCritical;
             }
         }
-
-        bool IsTargetInRange (GameObject target)
-        {
-            float distanceToTarget = (target.transform.position - transform.position).magnitude;
-            {
-                return distanceToTarget <= currentWeaponConfig.GetMaxAttackRange();
-            }
-        }
-
     }
 }

@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
-using RPG.CameraUI;
 
 namespace RPG.Characters
 {
@@ -30,8 +29,8 @@ namespace RPG.Characters
         [SerializeField] float moveThreshold = 1f;
 
         [Header ("NavMesh Agent")]
-        [SerializeField] float navMeshAgentSteeringSpeed = 1f;
-        [SerializeField] float navMeshAgentStoppingDistance = 1f;
+        [SerializeField] float navMeshSteeringSpeed = 1f;
+        [SerializeField] float navMeshStoppingDistance = 1f;
 
         Rigidbody myRigidbody;
         NavMeshAgent navMeshAgent;
@@ -63,8 +62,8 @@ namespace RPG.Characters
             capsuleCollider.height = colliderHeight;
 
             navMeshAgent = gameObject.AddComponent<NavMeshAgent> ();
-            navMeshAgent.speed = navMeshAgentSteeringSpeed;
-            navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
+            navMeshAgent.speed = navMeshSteeringSpeed;
+            navMeshAgent.stoppingDistance = navMeshStoppingDistance;
             navMeshAgent.autoBraking = false;
             navMeshAgent.updatePosition = true;
             navMeshAgent.updateRotation = false;
