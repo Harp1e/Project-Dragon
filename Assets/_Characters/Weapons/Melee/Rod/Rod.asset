@@ -9,12 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475d2ffbe615abd499d5c63b4c9abaa8, type: 3}
-  m_Name: Rod
+  m_Name: New Weapon Config
   m_EditorClassIdentifier: 
-  gripTransform: {fileID: 4760213929144624, guid: 769c9fa714c81794fafaff18a493fbcb,
-    type: 2}
-  weaponPrefab: {fileID: 1264841264416798, guid: 6d06a2cbdc27b5442a59a151753821ff,
-    type: 2}
-  attackAnimation: {fileID: 7400000, guid: 4496e3e9b4c7231499b46f4e5d36d430, type: 3}
+  gripTransform: {fileID: 0}
+  weaponPrefab: {fileID: 0}
+  attackAnimation: {fileID: 0}
   minTimeBetweenHits: 0.5
-  maxAttackRange: 3
+  maxAttackRange: 2
+  additionalDamage: 10

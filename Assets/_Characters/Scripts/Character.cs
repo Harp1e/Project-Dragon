@@ -40,7 +40,7 @@ namespace RPG.Characters
         float turnAmount;
         float forwardAmount;
 
-        public AnimatorOverrideController GetAnimatorOverrideController ()
+        public AnimatorOverrideController GetOverrideController ()
         {
             return animatorOverrideController;
         }

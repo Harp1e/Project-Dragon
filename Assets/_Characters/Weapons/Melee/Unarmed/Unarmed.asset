@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d2ffbe615abd499d5c63b4c9abaa8, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
-  gripTransform: {fileID: 4083434496290680, guid: 79593e5298625a442b6bc2145a23b4d3,
-    type: 2}
-  weaponPrefab: {fileID: 1081759683439480, guid: 209274aaffe2c2445b16750d8efda2c9,
-    type: 2}
-  attackAnimation: {fileID: 7400000, guid: ce17781955d25c647922801319f24e9e, type: 3}
+  gripTransform: {fileID: 0}
+  weaponPrefab: {fileID: 0}
+  attackAnimation: {fileID: 0}
   minTimeBetweenHits: 0.5
   maxAttackRange: 2
+  additionalDamage: 10
