@@ -11,9 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d2ffbe615abd499d5c63b4c9abaa8, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  gripTransform: {fileID: 0}
-  weaponPrefab: {fileID: 0}
-  attackAnimation: {fileID: 0}
-  minTimeBetweenHits: 0.5
-  maxAttackRange: 2
+  gripTransform: {fileID: 4760213929144624, guid: c0c0942894e28ac4597884d7ecceafe1,
+    type: 2}
+  weaponPrefab: {fileID: 1277290872445230, guid: 0982ce6c23f616d4bae4c222799510a6,
+    type: 2}
+  attackAnimation: {fileID: 7400000, guid: 65ab56ec63abae340b7646d2ed24c864, type: 3}
+  minTimeBetweenHits: 1.5
+  maxAttackRange: 3
   additionalDamage: 10
