@@ -5,10 +5,6 @@ namespace RPG.Characters
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] ParticleSystem criticalHitParticle;
-        [Range (0.1f, 1.0f)] [SerializeField] float criticalHealthChance = 0.1f;
-        [SerializeField] float criticalHitMultiplier = 1.25f;
-
         Character character;
         SpecialAbilities abilities;
         CameraRaycaster cameraRaycaster;

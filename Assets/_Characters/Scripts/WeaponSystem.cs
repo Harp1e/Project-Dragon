@@ -62,6 +62,7 @@ namespace RPG.Characters
         {
             return currentWeaponConfig;
         }
+
         void SetAttackAnimation ()
         {
             animator = GetComponent<Animator> ();
