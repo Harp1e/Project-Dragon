@@ -11,6 +11,7 @@ namespace RPG.Characters
         [SerializeField] AudioClip pickupSFX;
 
         AudioSource audioSource;
+        WeaponSystem character;
 
         void Start ()
         {
@@ -43,15 +44,27 @@ namespace RPG.Characters
 
         void OnTriggerEnter (Collider other)
         {
-            var character = other.GetComponent<WeaponSystem> ();
+            character = other.GetComponent<WeaponSystem> ();
             //if (character != null && character.gameObject.tag == "Player")
             if (character != null)
             {
+                // weapon is lost when dropped
                 character.PutWeaponInHand (weaponConfig);
                 audioSource.PlayOneShot (pickupSFX);
+                // Disable the pickup point
+                StartCoroutine (DisablePickup ());
+            }            
+        }
+
+        IEnumerator DisablePickup ()
+        {
+            if (!audioSource.isPlaying)
+            {
+                gameObject.SetActive (false);
+                yield break;
             }
-            
-            
+            yield return null;
+            StartCoroutine (DisablePickup ());
         }
     }
 }

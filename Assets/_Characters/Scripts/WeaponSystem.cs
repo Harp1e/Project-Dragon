@@ -91,6 +91,7 @@ namespace RPG.Characters
             }
         }
 
+        // TODO where is this used?
         float CalculateDamage ()
         {
             return baseDamage + currentWeaponConfig.GetAdditionalDamage ();
