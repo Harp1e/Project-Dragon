@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 4350876328407770}
   - component: {fileID: 114232236869067626}
   - component: {fileID: 114405324427787780}
+  - component: {fileID: 114935359333134916}
   m_Layer: 0
   m_Name: Enemy 101
   m_TagString: Untagged
@@ -1165,7 +1166,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129785205595446}
   m_LocalRotation: {x: -0, y: 0.8154048, z: -0, w: 0.5788913}
-  m_LocalPosition: {x: 0.03538867, y: -0.01, z: 4.38}
+  m_LocalPosition: {x: 3.58, y: -0.01, z: 4.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4614981268051920}
@@ -1924,6 +1925,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9e865ae3a48414899917ccd42fc9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114935359333134916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129785205595446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d7deeec322c2e4dab02e801d652083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: ef8fb4c94ee9a3c4ab76fe0a48d50033, type: 3}
+  layerFilter: 10
+  triggerRadius: 3
+  isOneTimeOnly: 1
 --- !u!137 &137171427697128310
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
