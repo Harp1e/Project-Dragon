@@ -173,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4350876328407770}
   - component: {fileID: 114232236869067626}
+  - component: {fileID: 114405324427787780}
   m_Layer: 0
   m_Name: Enemy 101
   m_TagString: Untagged
@@ -1164,7 +1165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129785205595446}
   m_LocalRotation: {x: -0, y: 0.8154048, z: -0, w: 0.5788913}
-  m_LocalPosition: {x: 0.03538867, y: 0.425, z: 4.38}
+  m_LocalPosition: {x: 0.03538867, y: -0.01, z: 4.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4614981268051920}
@@ -1898,6 +1899,20 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshSteeringSpeed: 1
   navMeshStoppingDistance: 1
+--- !u!114 &114405324427787780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129785205595446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e532ac5ef0ab79c4c98c02c029c09bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponConfig: {fileID: 11400000, guid: 0183e54c9e3d0344f8915b18343e7c8d,
+    type: 2}
+  baseDamage: 10
 --- !u!114 &114792146343791920
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -43,10 +43,11 @@ namespace RPG.Characters
 
         void OnTriggerEnter (Collider other)
         {
-            var body = other.GetComponent<WeaponSystem> ();
-            if (body != null)
+            var character = other.GetComponent<WeaponSystem> ();
+            //if (character != null && character.gameObject.tag == "Player")
+            if (character != null)
             {
-                body.PutWeaponInHand (weaponConfig);
+                character.PutWeaponInHand (weaponConfig);
                 audioSource.PlayOneShot (pickupSFX);
             }
             
