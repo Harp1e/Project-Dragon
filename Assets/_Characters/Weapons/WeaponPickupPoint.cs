@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Characters
 {
-    [ExecuteInEditMode]
+    // [ExecuteInEditMode]
     public class WeaponPickupPoint : MonoBehaviour
     {
         [SerializeField] WeaponConfig weaponConfig;
@@ -13,12 +14,15 @@ namespace RPG.Characters
         AudioSource audioSource;
         WeaponSystem character;
 
+        bool weaponCollected = false;
+
         void Start ()
         {
             audioSource = GetComponent<AudioSource> ();
         }
 
-        void Update ()
+        //void Update ()
+        public void RefreshPrefab ()
         {
             if (!Application.isPlaying)
             {
@@ -45,9 +49,10 @@ namespace RPG.Characters
         void OnTriggerEnter (Collider other)
         {
             character = other.GetComponent<WeaponSystem> ();
-            //if (character != null && character.gameObject.tag == "Player")
-            if (character != null)
+            if (character != null && character.gameObject.tag == "Player" && !weaponCollected)
+            // if (character != null)
             {
+                weaponCollected = true;
                 // weapon is lost when dropped
                 character.PutWeaponInHand (weaponConfig);
                 audioSource.PlayOneShot (pickupSFX);
