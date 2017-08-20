@@ -12,7 +12,7 @@ namespace RPG.Characters
         [SerializeField] AudioClip pickupSFX;
 
         AudioSource audioSource;
-        WeaponSystem character;
+        WeaponSystem weaponSystem;
 
         bool weaponCollected = false;
 
@@ -48,28 +48,28 @@ namespace RPG.Characters
 
         void OnTriggerEnter (Collider other)
         {
-            character = other.GetComponent<WeaponSystem> ();
-            if (character != null && character.gameObject.tag == "Player" && !weaponCollected)
+            weaponSystem = other.GetComponent<WeaponSystem> ();
+            if (weaponSystem != null && weaponSystem.gameObject.tag == "Player" && !weaponCollected)
             // if (character != null)
             {
                 weaponCollected = true;
-                // weapon is lost when dropped
-                character.PutWeaponInHand (weaponConfig);
                 audioSource.PlayOneShot (pickupSFX);
-                // Disable the pickup point
-                StartCoroutine (DisablePickup ());
+                StartCoroutine (SwapWeapon ());
             }            
         }
 
-        IEnumerator DisablePickup ()
+        IEnumerator SwapWeapon ()
         {
             if (!audioSource.isPlaying)
             {
+                // old weapon is lost when dropped
+                weaponSystem.PutWeaponInHand (weaponConfig);
+                // Disable the pickup point
                 gameObject.SetActive (false);
                 yield break;
             }
             yield return null;
-            StartCoroutine (DisablePickup ());
+            StartCoroutine (SwapWeapon ());
         }
     }
 }

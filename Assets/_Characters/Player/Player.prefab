@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e532ac5ef0ab79c4c98c02c029c09bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponConfig: {fileID: 11400000, guid: 44e59ca700d228543af948d75ac0874a,
+  currentWeaponConfig: {fileID: 11400000, guid: c657e8fa24817574fab3277199cb38ed,
     type: 2}
   baseDamage: 10
 --- !u!114 &114784287358674538
@@ -2012,7 +2012,7 @@ MonoBehaviour:
   stationaryTurnSpeed: 180
   moveThreshold: 1
   navMeshSteeringSpeed: 1
-  navMeshStoppingDistance: 1
+  navMeshStoppingDistance: 0.5
 --- !u!137 &137560855296286146
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

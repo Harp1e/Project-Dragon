@@ -17,7 +17,7 @@ namespace RPG.CameraUI
         float maxRaycastDepth = 100f; // Hard coded value
 
         // Delegates
-        public delegate void OnMouseOverEnemy (Enemy enemy); // declare new delegate type
+        public delegate void OnMouseOverEnemy (EnemyAI enemy); // declare new delegate type
         public event OnMouseOverEnemy onMouseOverEnemy; // instantiate an observer set
 
         public delegate void OnMouseOverTerrain (Vector3 destination); // declare new delegate type
@@ -42,7 +42,7 @@ namespace RPG.CameraUI
             if (currentScreenRect.Contains (Input.mousePosition))
             {
                 Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-                // Specify layer priorities here...
+                // Specify layer priorities here, order matters
                 if (RaycastForEnemy (ray)) { return; }
                 if (RaycastForPotentiallyWalkable (ray)) { return; }
             }
@@ -54,8 +54,10 @@ namespace RPG.CameraUI
             Physics.Raycast (ray, out hitInfo, maxRaycastDepth);
             if (hitInfo.transform == null) { return false; }
             var gameObjectHit = hitInfo.collider.gameObject; 
-            var enemyHit = gameObjectHit.GetComponent<Enemy> ();
-            if (enemyHit && enemyHit.gameObject.tag != "Healer")  
+            var enemyHit = gameObjectHit.GetComponent<EnemyAI> ();
+
+            // if (enemyHit && enemyHit.gameObject.tag != "Healer")
+            if (enemyHit)
             {
                 Cursor.SetCursor (enemyCursor, cursorHotspot, CursorMode.Auto);
                 onMouseOverEnemy (enemyHit);

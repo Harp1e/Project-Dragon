@@ -6,11 +6,10 @@ namespace RPG.Characters
     public class PlayerMovement : MonoBehaviour
     {
         Character character;
-        SpecialAbilities abilities;
         CameraRaycaster cameraRaycaster;
-        Enemy enemy;
+        EnemyAI enemy;
+        SpecialAbilities abilities;
         WeaponSystem weaponSystem;
-
 
         void Start ()
         {
@@ -19,7 +18,6 @@ namespace RPG.Characters
             weaponSystem = GetComponent<WeaponSystem> ();
 
             RegisterForMouseEvents ();
-           
         }
 
         void RegisterForMouseEvents ()
@@ -48,7 +46,7 @@ namespace RPG.Characters
             }
         }
 
-        void OnMouseOverEnemy (Enemy enemyToSet)
+        void OnMouseOverEnemy (EnemyAI enemyToSet)
         {
             this.enemy = enemyToSet;
             if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))

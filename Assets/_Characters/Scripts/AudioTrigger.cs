@@ -4,7 +4,7 @@ namespace RPG.Characters
 {
     public class AudioTrigger : MonoBehaviour
     {
-        [SerializeField] AudioClip clip;
+        [SerializeField] AudioClip[] clips;
         [SerializeField] int layerFilter = 10;  // TODO Remove dependance on layers?
         [SerializeField] float triggerRadius = 5f;
         [SerializeField] bool isOneTimeOnly = true;
@@ -39,6 +39,7 @@ namespace RPG.Characters
             }
             else if (audioSource.isPlaying == false)
             {
+                var clip = clips[Random.Range (0, clips.Length)];
                 audioSource.PlayOneShot(clip);
                 hasPlayed = true;
             }
@@ -46,7 +47,7 @@ namespace RPG.Characters
 
         void OnDrawGizmos ()
         {
-            Gizmos.color = new Color (0, 255f, 0, .5f);
+            Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere (transform.position, triggerRadius);
         }
     }
