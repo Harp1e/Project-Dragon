@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1237777095768644}
+  m_IsPrefabParent: 1
+--- !u!1 &1237777095768644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4689318853106032}
+  - component: {fileID: 114353929490396260}
+  m_Layer: 0
+  m_Name: AudoTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4689318853106032
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237777095768644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114353929490396260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237777095768644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d7deeec322c2e4dab02e801d652083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 6da16ecaccfe83a4ebe666c07f3dce47, type: 3}
+  - {fileID: 8300000, guid: b1900794051f0b94ba7e625c85b20293, type: 3}
+  - {fileID: 8300000, guid: d93739e671b4083469f6d37325563133, type: 3}
+  - {fileID: 8300000, guid: 85d45bb8fad4b2340a67fcb2803f09de, type: 3}
+  - {fileID: 8300000, guid: dc59be49bf7858b44997cd3f7cbe8b62, type: 3}
+  - {fileID: 8300000, guid: 7604788073de75941bf5ddbf682c463f, type: 3}
+  - {fileID: 8300000, guid: d26b101177610ec4296d82ab6bebc72a, type: 3}
+  layerFilter: 10
+  triggerRadius: 3
+  isOneTimeOnly: 1

@@ -6,7 +6,7 @@ namespace RPG.Characters
     {
         [SerializeField] AudioClip[] clips;
         [SerializeField] int layerFilter = 10;  // TODO Remove dependance on layers?
-        [SerializeField] float triggerRadius = 5f;
+        [SerializeField] float triggerRadius = 3f;
         [SerializeField] bool isOneTimeOnly = true;
 
         bool hasPlayed = false;
@@ -14,11 +14,12 @@ namespace RPG.Characters
 
         void Start ()
         {
-            audioSource = gameObject.GetComponent<AudioSource> ();
-
+            audioSource = gameObject.GetComponentInParent<AudioSource> ();
+            
             SphereCollider sphereCollider = gameObject.AddComponent<SphereCollider> ();
             sphereCollider.isTrigger = true;
             sphereCollider.radius = triggerRadius;
+            var item = GetComponent<AudioTrigger> ();
             gameObject.layer = LayerMask.NameToLayer ("Ignore Raycast");
         }
 
