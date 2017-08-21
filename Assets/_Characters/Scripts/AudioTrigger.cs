@@ -4,22 +4,28 @@ namespace RPG.Characters
 {
     public class AudioTrigger : MonoBehaviour
     {
-        [SerializeField] AudioClip[] clips;
-        [SerializeField] int layerFilter = 10;  // TODO Remove dependance on layers?
-        [SerializeField] float triggerRadius = 3f;
-        [SerializeField] bool isOneTimeOnly = true;
+        AudioClip[] clips;
+        int layerFilter;  // TODO Remove dependance on layers?
+        float triggerRadius;
+        bool isOneTimeOnly;
 
         bool hasPlayed = false;
         AudioSource audioSource;
+        Character character;
 
         void Start ()
         {
+            character = GetComponentInParent<Character> ();
+            clips = character.GetAudioClips ();
+            layerFilter = character.GetTriggerLayerFilter ();
+            triggerRadius = character.GetTriggerRadius ();
+            isOneTimeOnly = character.GetTriggerIsOneTimeOnly ();
+
             audioSource = gameObject.GetComponentInParent<AudioSource> ();
             
             SphereCollider sphereCollider = gameObject.AddComponent<SphereCollider> ();
             sphereCollider.isTrigger = true;
             sphereCollider.radius = triggerRadius;
-            var item = GetComponent<AudioTrigger> ();
             gameObject.layer = LayerMask.NameToLayer ("Ignore Raycast");
         }
 

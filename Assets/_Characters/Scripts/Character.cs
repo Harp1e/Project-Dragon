@@ -13,8 +13,15 @@ namespace RPG.Characters
         [SerializeField] Avatar characterAvatar;
 
         [Header ("AudioSource")]
-        [Range (0, 1)][SerializeField] float audioVolume = 1f;
-        [Range(0,1)][SerializeField] float audioSpatialBlend = 0.5f;
+        [Range (0, 1)] [SerializeField] float audioVolume = 1f;
+        [Range (0, 1)] [SerializeField] float audioSpatialBlend = 0.5f;
+
+        [Header ("AudioTrigger")]
+        [SerializeField] GameObject audioTriggerPrefab;
+        [SerializeField] AudioClip[] triggerClips;
+        [SerializeField] int triggerLayerFilter = 10;  // TODO Remove dependance on layers?
+        [SerializeField] float triggerRadius = 3f;
+        [SerializeField] bool triggerIsOneTimeOnly = true;
 
         [Header ("Capsule Collider")]
         [SerializeField] Vector3 colliderCenter = new Vector3 (0f, 1.03f, 0f);
@@ -35,7 +42,7 @@ namespace RPG.Characters
         Rigidbody myRigidbody;
         NavMeshAgent navMeshAgent;
         Animator animator;
-
+        
         bool isAlive = true;
         float turnAmount;
         float forwardAmount;
@@ -44,6 +51,11 @@ namespace RPG.Characters
         {
             return animatorOverrideController;
         }
+
+        public AudioClip[] GetAudioClips () { return triggerClips; }
+        public int GetTriggerLayerFilter () { return triggerLayerFilter; }
+        public float GetTriggerRadius () { return triggerRadius; }
+        public bool GetTriggerIsOneTimeOnly () { return triggerIsOneTimeOnly; }
 
         void Awake ()
         {
@@ -60,6 +72,11 @@ namespace RPG.Characters
             audioSource.volume = audioVolume;
             audioSource.spatialBlend = audioSpatialBlend;
             audioSource.playOnAwake = false;
+
+            if (triggerClips.Length > 0)
+            {
+                Instantiate (audioTriggerPrefab, gameObject.transform);
+            }
 
             var capsuleCollider = gameObject.AddComponent<CapsuleCollider> ();
             capsuleCollider.center = colliderCenter;

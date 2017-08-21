@@ -227,22 +227,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1199499684453850
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4650866811416152}
-  - component: {fileID: 114394240925663078}
-  m_Layer: 0
-  m_Name: AudoTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1260982430499496
 GameObject:
   m_ObjectHideFlags: 1
@@ -1186,7 +1170,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4614981268051920}
-  - {fileID: 4650866811416152}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 109.255005, z: 0}
@@ -1431,19 +1414,6 @@ Transform:
   - {fileID: 4526728930153150}
   m_Father: {fileID: 4417132732054536}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4650866811416152
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199499684453850}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4350876328407770}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4683357154314112
 Transform:
@@ -1920,6 +1890,19 @@ MonoBehaviour:
   characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
   audioVolume: 1
   audioSpatialBlend: 0.5
+  audioTriggerPrefab: {fileID: 1237777095768644, guid: 300b70538d1b25a4bacbaa37cbe9f85f,
+    type: 2}
+  triggerClips:
+  - {fileID: 8300000, guid: 6da16ecaccfe83a4ebe666c07f3dce47, type: 3}
+  - {fileID: 8300000, guid: b1900794051f0b94ba7e625c85b20293, type: 3}
+  - {fileID: 8300000, guid: d93739e671b4083469f6d37325563133, type: 3}
+  - {fileID: 8300000, guid: 85d45bb8fad4b2340a67fcb2803f09de, type: 3}
+  - {fileID: 8300000, guid: dc59be49bf7858b44997cd3f7cbe8b62, type: 3}
+  - {fileID: 8300000, guid: 7604788073de75941bf5ddbf682c463f, type: 3}
+  - {fileID: 8300000, guid: d26b101177610ec4296d82ab6bebc72a, type: 3}
+  triggerLayerFilter: 10
+  triggerRadius: 2
+  triggerIsOneTimeOnly: 0
   colliderCenter: {x: 0, y: 1.03, z: 0}
   colliderRadius: 0.2
   colliderHeight: 2.03
@@ -1942,28 +1925,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 4
---- !u!114 &114394240925663078
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199499684453850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d7deeec322c2e4dab02e801d652083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: 6da16ecaccfe83a4ebe666c07f3dce47, type: 3}
-  - {fileID: 8300000, guid: b1900794051f0b94ba7e625c85b20293, type: 3}
-  - {fileID: 8300000, guid: d93739e671b4083469f6d37325563133, type: 3}
-  - {fileID: 8300000, guid: 85d45bb8fad4b2340a67fcb2803f09de, type: 3}
-  - {fileID: 8300000, guid: dc59be49bf7858b44997cd3f7cbe8b62, type: 3}
-  - {fileID: 8300000, guid: 7604788073de75941bf5ddbf682c463f, type: 3}
-  - {fileID: 8300000, guid: d26b101177610ec4296d82ab6bebc72a, type: 3}
-  layerFilter: 10
-  triggerRadius: 3
-  isOneTimeOnly: 0
 --- !u!114 &114785481181194378
 MonoBehaviour:
   m_ObjectHideFlags: 1
