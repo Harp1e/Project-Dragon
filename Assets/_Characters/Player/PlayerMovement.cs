@@ -53,9 +53,9 @@ namespace RPG.Characters
             {
                 weaponSystem.AttackTarget (enemy.gameObject);
             }
-            else if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(1) && IsTargetInRange (enemy.gameObject))
             {
-                abilities.AttemptSpecialAbility (0);
+                abilities.AttemptSpecialAbility (0, enemy.gameObject);
             }
         }
 

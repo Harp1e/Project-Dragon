@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -53,7 +51,7 @@ namespace RPG.Characters
             currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
             if (damage > 0)
             {
-                var clip = damageSounds[UnityEngine.Random.Range (0, damageSounds.Length)];
+                var clip = damageSounds[Random.Range (0, damageSounds.Length)];
                 audioSource.PlayOneShot (clip);
             }
             if (characterDies)
@@ -76,7 +74,7 @@ namespace RPG.Characters
             var playerComponent = GetComponent<PlayerMovement> ();
             if (playerComponent && playerComponent.isActiveAndEnabled)
             {
-                audioSource.clip = deathSounds[UnityEngine.Random.Range (0, deathSounds.Length)];
+                audioSource.clip = deathSounds[Random.Range (0, deathSounds.Length)];
                 audioSource.Play ();
                 yield return new WaitForSecondsRealtime (audioSource.clip.length);
                 SceneManager.LoadScene (0);

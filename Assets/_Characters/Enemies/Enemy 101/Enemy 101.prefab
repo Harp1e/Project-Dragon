@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 114232236869067626}
   - component: {fileID: 114269892935708978}
   - component: {fileID: 114785481181194378}
+  - component: {fileID: 114590469775273988}
   m_Layer: 0
   m_Name: Enemy 101
   m_TagString: Untagged
@@ -1925,6 +1926,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 4
+--- !u!114 &114590469775273988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129785205595446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a84f04e8ad5ab747a15009ba768ec69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 100
+  deathVanishSeconds: 2
+  healthBar: {fileID: 0}
+  damageSounds:
+  - {fileID: 8300000, guid: 801b54b7671480e42a7377e4e9552c88, type: 3}
+  - {fileID: 8300000, guid: 8dace4e45cb62b84f83b82dc2f9c7e84, type: 3}
+  - {fileID: 8300000, guid: 7809a56bc4df0ae48897bdd1bbc57651, type: 3}
+  - {fileID: 8300000, guid: b647afb8f3d0bc54da685b58fa94cecb, type: 3}
+  - {fileID: 8300000, guid: 62a169f03bd79714d928203cd2c6b8d9, type: 3}
+  - {fileID: 8300000, guid: 69b13b82c72435f4b815b5f6e6b1370c, type: 3}
+  deathSounds: []
+  currentHealthPoints: 0
 --- !u!114 &114785481181194378
 MonoBehaviour:
   m_ObjectHideFlags: 1

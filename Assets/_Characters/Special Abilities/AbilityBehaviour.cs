@@ -31,7 +31,6 @@ namespace RPG.Characters
         {
             yield return new WaitWhile (() => particleObject.IsAlive ());
             Destroy (particleObject.gameObject);
-            //yield return new WaitForEndOfFrame();
         }
 
         protected void PlayAbilitySound ()
