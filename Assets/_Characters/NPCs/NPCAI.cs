@@ -7,11 +7,12 @@ namespace RPG.Characters
 {
     [RequireComponent (typeof (Character))]
     [RequireComponent (typeof (WeaponSystem))]
-    public class EnemyAI : MonoBehaviour
+    public class NPCAI : MonoBehaviour
     {
         [SerializeField] float chaseRadius = 4f;
         [SerializeField] WaypointContainer patrolPath;
         [SerializeField] float waypointWaitTime = 0.5f;
+        [SerializeField] bool isCompanion = false;
 
         Character character;
         NavMeshAgent agent;
@@ -44,21 +45,29 @@ namespace RPG.Characters
                 StopAllCoroutines ();
                 StartCoroutine (Patrol ());
             }
-            if (distanceToPlayer <= chaseRadius && state != State.chasing)
+            if (distanceToPlayer <= chaseRadius && state != State.chasing && isCompanion)
             {
                 StopAllCoroutines ();
-                StartCoroutine (ChasePlayer());
+                StartCoroutine (ChasePlayer ());
             }
-            if (distanceToPlayer < currentWeaponRange && state != State.attacking)
+
+            if (distanceToPlayer <= chaseRadius && state != State.idle && !isCompanion)
             {
                 StopAllCoroutines ();
-                StartCoroutine (AttackPlayer ());
+                Idle ();
             }
+            
+            //if (distanceToPlayer < currentWeaponRange && state != State.attacking)
+            //{
+            //    StopAllCoroutines ();
+            //    StartCoroutine (AttackPlayer ());
+            //}
         }
 
         IEnumerator ChasePlayer ()
         {
             state = State.chasing;
+            agent.isStopped = false;
             while (distanceToPlayer >= currentWeaponRange && distanceToPlayer <= chaseRadius)
             {
                 character.SetDestination (player.transform.position);
@@ -69,12 +78,14 @@ namespace RPG.Characters
         IEnumerator Patrol ()
         {
             state = State.patrolling;
+            agent.isStopped = false;
+
             while (true)
             {
                 Vector3 nextWaypointPos = patrolPath.transform.GetChild (nextWaypointIndex).position;
                 character.SetDestination (nextWaypointPos);
                 CycleWaypointWhenClose (nextWaypointPos);
-                yield return new WaitForSeconds(waypointWaitTime);
+                yield return new WaitForSeconds (waypointWaitTime);
             }
         }
 
@@ -86,9 +97,17 @@ namespace RPG.Characters
             }
         }
 
+        void Idle ()
+        {
+            state = State.idle;
+            agent.isStopped = true;
+        }
+
         IEnumerator AttackPlayer ()
         {
             state = State.attacking;
+            agent.isStopped = false;
+
             Debug.Log (this.name + " Attacking");
             while (distanceToPlayer <= currentWeaponRange)
             {

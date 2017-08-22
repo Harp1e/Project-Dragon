@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 4299584703708004}
   - component: {fileID: 114938165726850930}
   - component: {fileID: 114358843963136152}
+  - component: {fileID: 114460275329015778}
   m_Layer: 0
   m_Name: NPC 101
   m_TagString: Untagged
@@ -1886,6 +1887,20 @@ MonoBehaviour:
   currentWeaponConfig: {fileID: 11400000, guid: 2606dee3c37a22e42bbf217407a1647b,
     type: 2}
   baseDamage: 0
+--- !u!114 &114460275329015778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361716328726882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b310b42f46a164f9bcfac48f8cbb95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPath: {fileID: 0}
+  isCompanion: 0
+  followRadius: 4
 --- !u!114 &114775768884216952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1930,7 +1945,7 @@ MonoBehaviour:
   stationaryTurnSpeed: 180
   moveThreshold: 1
   navMeshSteeringSpeed: 1
-  navMeshStoppingDistance: 1
+  navMeshStoppingDistance: 2
 --- !u!137 &137225179512275450
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

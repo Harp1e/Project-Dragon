@@ -1926,6 +1926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 4
+  patrolPath: {fileID: 0}
 --- !u!114 &114590469775273988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1948,7 +1949,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 62a169f03bd79714d928203cd2c6b8d9, type: 3}
   - {fileID: 8300000, guid: 69b13b82c72435f4b815b5f6e6b1370c, type: 3}
   deathSounds: []
-  currentHealthPoints: 0
 --- !u!114 &114785481181194378
 MonoBehaviour:
   m_ObjectHideFlags: 1
