@@ -12,6 +12,7 @@ namespace RPG.Characters
         [SerializeField] float chaseRadius = 4f;
         [SerializeField] WaypointContainer patrolPath;
         [SerializeField] float waypointWaitTime = 0.5f;
+        [SerializeField] float patrolSpeed = 0.5f;
 
         Character character;
         NavMeshAgent agent;
@@ -22,6 +23,7 @@ namespace RPG.Characters
 
         float currentWeaponRange;
         float distanceToPlayer;
+        float originalSpeed;
         int nextWaypointIndex;
 
 
@@ -30,6 +32,7 @@ namespace RPG.Characters
             character = GetComponent<Character> ();
             agent = character.GetComponent<NavMeshAgent> ();
             player = FindObjectOfType<PlayerMovement> ();
+            originalSpeed = agent.speed;
         }
 
         private void Update ()
@@ -59,6 +62,7 @@ namespace RPG.Characters
         IEnumerator ChasePlayer ()
         {
             state = State.chasing;
+            agent.speed = originalSpeed;
             while (distanceToPlayer >= currentWeaponRange && distanceToPlayer <= chaseRadius)
             {
                 character.SetDestination (player.transform.position);
@@ -69,8 +73,10 @@ namespace RPG.Characters
         IEnumerator Patrol ()
         {
             state = State.patrolling;
+            agent.speed = patrolSpeed;
             while (true)
             {
+                if (patrolPath == null) { yield break; }
                 Vector3 nextWaypointPos = patrolPath.transform.GetChild (nextWaypointIndex).position;
                 character.SetDestination (nextWaypointPos);
                 CycleWaypointWhenClose (nextWaypointPos);
@@ -89,6 +95,7 @@ namespace RPG.Characters
         IEnumerator AttackPlayer ()
         {
             state = State.attacking;
+            agent.speed = originalSpeed;
             Debug.Log (this.name + " Attacking");
             while (distanceToPlayer <= currentWeaponRange)
             {

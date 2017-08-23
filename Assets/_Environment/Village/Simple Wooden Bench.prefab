@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4678339299686394}
-  - component: {fileID: 65128003068084936}
   m_Layer: 0
   m_Name: Simple Wooden Bench
   m_TagString: Untagged
@@ -112,18 +111,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1931902894686380}
   m_Mesh: {fileID: 4300002, guid: 3de52ffd76f3acb4584669e87147108b, type: 3}
---- !u!65 &65128003068084936
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1716824859944226}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.2640476, y: 0.8773687, z: 0.5189042}
-  m_Center: {x: -0.018865585, y: 0.41034448, z: -0.004722595}
 --- !u!65 &65677756115580244
 BoxCollider:
   m_ObjectHideFlags: 1

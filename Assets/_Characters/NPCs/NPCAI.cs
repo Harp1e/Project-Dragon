@@ -12,17 +12,19 @@ namespace RPG.Characters
         [SerializeField] float chaseRadius = 4f;
         [SerializeField] WaypointContainer patrolPath;
         [SerializeField] float waypointWaitTime = 0.5f;
+        [SerializeField] float patrolSpeed = 0.5f;
         [SerializeField] bool isCompanion = false;
 
         Character character;
         NavMeshAgent agent;
         PlayerMovement player;
 
-        enum State { idle, patrolling, attacking, chasing }
+        enum State { idle, patrolling, talking, chasing }
         State state = State.idle;
 
         float currentWeaponRange;
         float distanceToPlayer;
+        float originalSpeed;
         int nextWaypointIndex;
 
 
@@ -31,6 +33,7 @@ namespace RPG.Characters
             character = GetComponent<Character> ();
             agent = character.GetComponent<NavMeshAgent> ();
             player = FindObjectOfType<PlayerMovement> ();
+            originalSpeed = agent.speed;
         }
 
         private void Update ()
@@ -51,23 +54,17 @@ namespace RPG.Characters
                 StartCoroutine (ChasePlayer ());
             }
 
-            if (distanceToPlayer <= chaseRadius && state != State.idle && !isCompanion)
+            if (distanceToPlayer < currentWeaponRange && state != State.talking)
             {
                 StopAllCoroutines ();
-                Idle ();
+                StartCoroutine (TalkToPlayer ());
             }
-            
-            //if (distanceToPlayer < currentWeaponRange && state != State.attacking)
-            //{
-            //    StopAllCoroutines ();
-            //    StartCoroutine (AttackPlayer ());
-            //}
         }
 
         IEnumerator ChasePlayer ()
         {
             state = State.chasing;
-            agent.isStopped = false;
+            agent.speed = originalSpeed;
             while (distanceToPlayer >= currentWeaponRange && distanceToPlayer <= chaseRadius)
             {
                 character.SetDestination (player.transform.position);
@@ -78,10 +75,10 @@ namespace RPG.Characters
         IEnumerator Patrol ()
         {
             state = State.patrolling;
-            agent.isStopped = false;
-
+            agent.speed = patrolSpeed;
             while (true)
             {
+                if (patrolPath == null) { yield break; }
                 Vector3 nextWaypointPos = patrolPath.transform.GetChild (nextWaypointIndex).position;
                 character.SetDestination (nextWaypointPos);
                 CycleWaypointWhenClose (nextWaypointPos);
@@ -97,22 +94,12 @@ namespace RPG.Characters
             }
         }
 
-        void Idle ()
+        IEnumerator TalkToPlayer ()
         {
-            state = State.idle;
-            agent.isStopped = true;
-        }
-
-        IEnumerator AttackPlayer ()
-        {
-            state = State.attacking;
-            agent.isStopped = false;
-
-            Debug.Log (this.name + " Attacking");
-            while (distanceToPlayer <= currentWeaponRange)
-            {
-                yield return new WaitForEndOfFrame ();
-            }
+            state = State.talking;
+            agent.speed = originalSpeed;
+            character.SetDestination (player.transform.position);
+            yield break;
         }
 
         private void OnDrawGizmos ()

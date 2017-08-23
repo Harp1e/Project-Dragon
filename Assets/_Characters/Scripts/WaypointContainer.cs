@@ -12,8 +12,9 @@ namespace RPG.Characters
             Vector3 previousPosition = firstPosition;
             foreach (Transform waypoint in transform)
             {
-                Gizmos.color = Color.gray;
+                Gizmos.color = new Color (0.5f, 0.5f, 0.5f, 0.7f);
                 Gizmos.DrawSphere (waypoint.position, 0.2f);
+                Gizmos.color = Color.gray;
                 Gizmos.DrawLine (previousPosition, waypoint.position);
                 previousPosition = waypoint.position;
             }
