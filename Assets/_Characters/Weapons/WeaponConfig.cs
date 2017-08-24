@@ -28,8 +28,8 @@ namespace RPG.Characters
 
         public float GetMinTimeBetweenHits ()
         {
-            // TODO consider whether to take animation time into account
-            return minTimeBetweenHits;
+            float attackDuration = attackAnimation.length + minTimeBetweenHits;
+            return attackDuration;
         }
 
         public float GetMaxAttackRange ()

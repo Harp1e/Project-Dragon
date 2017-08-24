@@ -67,7 +67,7 @@ namespace RPG.Characters
             animator = GetComponent<Animator> ();
             var animatorOverrideController = character.GetOverrideController ();
             animator.runtimeAnimatorController = animatorOverrideController;
-            animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip ();    // TODO Remove constant
+            animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip (); 
         }
 
         private GameObject RequestDominantHand ()
