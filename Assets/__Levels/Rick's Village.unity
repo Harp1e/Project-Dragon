@@ -342,11 +342,6 @@ Prefab:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 2073561334}
-    - target: {fileID: 114460275329015778, guid: 878b30f320b97584abb001ae0b99fe6d,
-        type: 2}
-      propertyPath: waypointWaitTime
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 878b30f320b97584abb001ae0b99fe6d, type: 2}
   m_IsPrefabParent: 0

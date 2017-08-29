@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -31,7 +30,29 @@ namespace RPG.Characters
 
         void Update ()
         {
-            // TODO check if should still be attacking 
+            bool targetIsDead;
+            bool targetIsOutOfRange;
+            if (target == null)
+            {
+                targetIsDead = false;
+                targetIsOutOfRange = false;
+            }
+            else
+            {
+                float targetHealth = target.GetComponent<HealthSystem> ().healthAsPercentage;
+                targetIsDead =  targetHealth <= Mathf.Epsilon;
+
+                float distanceToTarget = Vector3.Distance (transform.position, target.transform.position);
+                targetIsOutOfRange = distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
+            }
+
+            float characterHealth = GetComponent<HealthSystem> ().healthAsPercentage;
+            bool characterIsDead = (characterHealth <= Mathf.Epsilon);
+
+            if (characterIsDead || targetIsOutOfRange || targetIsDead)
+            {
+                StopAllCoroutines ();
+            }
         }
 
         void WeaponSetup ()

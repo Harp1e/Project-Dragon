@@ -345,13 +345,14 @@ GameObject:
   - component: {fileID: 114938165726850930}
   - component: {fileID: 114358843963136152}
   - component: {fileID: 114460275329015778}
+  - component: {fileID: 114158089292909526}
   m_Layer: 0
   m_Name: NPC 101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1381852186812254
 GameObject:
   m_ObjectHideFlags: 1
@@ -1873,6 +1874,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220561305933408}
   m_Mesh: {fileID: 4300004, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+--- !u!114 &114158089292909526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361716328726882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a84f04e8ad5ab747a15009ba768ec69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 100
+  deathVanishSeconds: 2
+  healthBar: {fileID: 0}
+  damageSounds: []
+  deathSounds: []
 --- !u!114 &114358843963136152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1898,9 +1915,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b310b42f46a164f9bcfac48f8cbb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaseRadius: 4
   patrolPath: {fileID: 0}
+  waypointWaitTime: 1
+  patrolSpeed: 0.5
   isCompanion: 0
-  followRadius: 4
 --- !u!114 &114775768884216952
 MonoBehaviour:
   m_ObjectHideFlags: 1
