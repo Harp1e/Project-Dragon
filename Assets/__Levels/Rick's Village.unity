@@ -2611,16 +2611,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114573430709999994, guid: ac23129813b60cd49855a4633ea6e542,
-        type: 2}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 894341914}
     - target: {fileID: 114461706685701848, guid: ac23129813b60cd49855a4633ea6e542,
         type: 2}
       propertyPath: energyBar
       value: 
       objectReference: {fileID: 757598005}
+    - target: {fileID: 114573430709999994, guid: ac23129813b60cd49855a4633ea6e542,
+        type: 2}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 894341914}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac23129813b60cd49855a4633ea6e542, type: 2}
   m_IsPrefabParent: 0

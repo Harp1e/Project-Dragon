@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
+// TODO Refactor to provide a core AI functionality shared by enemy & NPC
+
 namespace RPG.Characters
 {
     [RequireComponent (typeof (Character))]
