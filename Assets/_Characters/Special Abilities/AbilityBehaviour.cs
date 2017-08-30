@@ -7,6 +7,9 @@ namespace RPG.Characters
     {
         protected AbilityConfig config;
 
+        const string ATTACK_TRIGGER = "Attack";
+        const string DEFAULT_ATTACK = "DEFAULT_ATTACK";
+
         public abstract void Use (GameObject target = null);
 
         public void SetConfig (AbilityConfig configToSet)
@@ -31,6 +34,15 @@ namespace RPG.Characters
         {
             yield return new WaitWhile (() => particleObject.IsAlive ());
             Destroy (particleObject.gameObject);
+        }
+
+        protected void PlayAbilityAnimation ()
+        {
+            Animator animator = GetComponent<Animator> ();
+            AnimatorOverrideController animatorOverrideController = GetComponent<Character> ().GetOverrideController ();
+            animator.runtimeAnimatorController = animatorOverrideController;
+            animatorOverrideController[DEFAULT_ATTACK] = config.GetAbilityAnimation ();
+            animator.SetTrigger (ATTACK_TRIGGER);
         }
 
         protected void PlayAbilitySound ()

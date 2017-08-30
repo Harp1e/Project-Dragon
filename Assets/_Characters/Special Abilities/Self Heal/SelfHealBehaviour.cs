@@ -14,6 +14,7 @@ namespace RPG.Characters
             ApplyHealth ();
             PlayParticleEffect ();
             PlayAbilitySound ();
+            PlayAbilityAnimation ();
         }
 
         private void Start ()
