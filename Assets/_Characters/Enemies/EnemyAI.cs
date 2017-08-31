@@ -19,7 +19,7 @@ namespace RPG.Characters
 
         Character character;
         NavMeshAgent agent;
-        PlayerMovement player;
+        PlayerControl player;
 
         enum State { idle, patrolling, attacking, chasing }
         State state = State.idle;
@@ -34,7 +34,7 @@ namespace RPG.Characters
         {
             character = GetComponent<Character> ();
             agent = character.GetComponent<NavMeshAgent> ();
-            player = FindObjectOfType<PlayerMovement> ();
+            player = FindObjectOfType<PlayerControl> ();
             originalSpeed = agent.speed;
         }
 
@@ -77,9 +77,8 @@ namespace RPG.Characters
         {
             state = State.patrolling;
             agent.speed = patrolSpeed;
-            while (true)
+            while (patrolPath != null)
             {
-                if (patrolPath == null) { yield break; }
                 Vector3 nextWaypointPos = patrolPath.transform.GetChild (nextWaypointIndex).position;
                 character.SetDestination (nextWaypointPos);
                 CycleWaypointWhenClose (nextWaypointPos);

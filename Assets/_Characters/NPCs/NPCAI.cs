@@ -19,7 +19,7 @@ namespace RPG.Characters
 
         Character character;
         NavMeshAgent agent;
-        PlayerMovement player;
+        PlayerControl player;
 
         enum State { idle, patrolling, talking, chasing }
         State state = State.idle;
@@ -34,7 +34,7 @@ namespace RPG.Characters
         {
             character = GetComponent<Character> ();
             agent = character.GetComponent<NavMeshAgent> ();
-            player = FindObjectOfType<PlayerMovement> ();
+            player = FindObjectOfType<PlayerControl> ();
             originalSpeed = agent.speed;
         }
 

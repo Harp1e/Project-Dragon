@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 using RPG.CameraUI;
 
 namespace RPG.Characters
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerControl : MonoBehaviour
     {
         Character character;
-        CameraRaycaster cameraRaycaster;
-        EnemyAI enemy;
         SpecialAbilities abilities;
         WeaponSystem weaponSystem;
 
@@ -22,7 +21,7 @@ namespace RPG.Characters
 
         void RegisterForMouseEvents ()
         {
-            cameraRaycaster = FindObjectOfType<CameraRaycaster> ();
+            var cameraRaycaster = FindObjectOfType<CameraRaycaster> ();
             cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
         }
@@ -46,17 +45,47 @@ namespace RPG.Characters
             }
         }
 
-        void OnMouseOverEnemy (EnemyAI enemyToSet)
+        void OnMouseOverEnemy (EnemyAI enemy)
         {
-            this.enemy = enemyToSet;
             if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
             {
                 weaponSystem.AttackTarget (enemy.gameObject);
+            }
+            else if (Input.GetMouseButton (0) && !IsTargetInRange (enemy.gameObject))
+            {
+                StartCoroutine (MoveAndAttack (enemy));
             }
             else if (Input.GetMouseButtonDown(1) && IsTargetInRange (enemy.gameObject))
             {
                 abilities.AttemptSpecialAbility (0, enemy.gameObject);
             }
+            else if (Input.GetMouseButtonDown (1) && !IsTargetInRange (enemy.gameObject))
+            {
+                StartCoroutine (MoveAndAttemptSpecialAbility (enemy));
+
+            }
+        }
+
+        IEnumerator MoveToTarget(GameObject target)
+        {
+            character.SetDestination (target.transform.position);
+            while (!IsTargetInRange(target.gameObject))
+            {
+                yield return new WaitForEndOfFrame ();
+            }
+            yield return new WaitForEndOfFrame ();
+        }
+
+        IEnumerator MoveAndAttack(EnemyAI enemy)
+        {
+            yield return StartCoroutine (MoveToTarget (enemy.gameObject));
+            weaponSystem.AttackTarget (enemy.gameObject);
+        }
+
+        IEnumerator MoveAndAttemptSpecialAbility (EnemyAI enemy)
+        {
+            yield return StartCoroutine (MoveToTarget (enemy.gameObject));
+            abilities.AttemptSpecialAbility (0, enemy.gameObject);
         }
 
         void OnMouseOverPotentiallyWalkable (Vector3 destination)
