@@ -14,7 +14,7 @@ namespace RPG.Characters
     {
         [SerializeField] float chaseRadius = 4f;
         [SerializeField] WaypointContainer patrolPath;
-        [SerializeField] float waypointWaitTime = 0.5f;
+        [SerializeField] float waypointDwellTime = 0.5f;
         [SerializeField] float patrolSpeed = 0.5f;
 
         Character character;
@@ -48,17 +48,22 @@ namespace RPG.Characters
             if (distanceToPlayer > chaseRadius && state != State.patrolling)
             {
                 StopAllCoroutines ();
+                weaponSystem.StopAttacking ();
                 StartCoroutine (Patrol ());
             }
             if (distanceToPlayer <= chaseRadius && state != State.chasing)
             {
                 StopAllCoroutines ();
+                weaponSystem.StopAttacking ();
                 StartCoroutine (ChasePlayer());
             }
             if (distanceToPlayer < currentWeaponRange && state != State.attacking)
             {
                 StopAllCoroutines ();
-                StartCoroutine (AttackPlayer ());
+                state = State.attacking;
+                agent.speed = originalSpeed;
+
+                weaponSystem.AttackTarget (player.gameObject);
             }
         }
 
@@ -82,7 +87,7 @@ namespace RPG.Characters
                 Vector3 nextWaypointPos = patrolPath.transform.GetChild (nextWaypointIndex).position;
                 character.SetDestination (nextWaypointPos);
                 CycleWaypointWhenClose (nextWaypointPos);
-                yield return new WaitForSeconds(waypointWaitTime);
+                yield return new WaitForSeconds(waypointDwellTime);
             }
         }
 
@@ -91,17 +96,6 @@ namespace RPG.Characters
             if (Vector3.Distance (transform.position, nextWaypointPos) <= agent.stoppingDistance)
             {
                 nextWaypointIndex = (nextWaypointIndex + 1) % patrolPath.transform.childCount;
-            }
-        }
-
-        IEnumerator AttackPlayer ()
-        {
-            state = State.attacking;
-            agent.speed = originalSpeed;
-            Debug.Log (this.name + " Attacking");
-            while (distanceToPlayer <= currentWeaponRange)
-            {
-                yield return new WaitForEndOfFrame ();
             }
         }
 

@@ -5,7 +5,7 @@ namespace RPG.Characters
     public class AudioTrigger : MonoBehaviour
     {
         AudioClip[] clips;
-        int layerFilter;  // TODO Remove dependance on layers?
+        int layerFilter;
         float triggerRadius;
         bool isOneTimeOnly;
 
@@ -31,7 +31,6 @@ namespace RPG.Characters
 
         void OnTriggerEnter (Collider other)
         {
-            // TODO Remove dependance on layers?
             if (other.gameObject.layer == layerFilter)
             {
                 RequestPlayAudioClip ();

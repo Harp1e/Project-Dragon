@@ -100,6 +100,11 @@ namespace RPG.Characters
             return currentWeaponConfig;
         }
 
+        public void StopAttacking ()
+        {
+            StopAllCoroutines ();
+        }
+
         void SetAttackAnimation ()
         {
             //animator = GetComponent<Animator> ();

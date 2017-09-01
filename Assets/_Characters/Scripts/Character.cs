@@ -19,7 +19,7 @@ namespace RPG.Characters
         [Header ("AudioTrigger")]
         [SerializeField] GameObject audioTriggerPrefab;
         [SerializeField] AudioClip[] triggerClips;
-        [SerializeField] int triggerLayerFilter = 10;  // TODO Remove dependance on layers?
+        [SerializeField] int triggerLayerFilter = 10; 
         [SerializeField] float triggerRadius = 3f;
         [SerializeField] bool triggerIsOneTimeOnly = true;
 

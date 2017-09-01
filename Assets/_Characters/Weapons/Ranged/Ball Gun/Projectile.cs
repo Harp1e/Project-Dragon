@@ -36,7 +36,7 @@ namespace RPG.Characters
             }
         }
 
-        // TODO Re-implement
+        // TODO Re-implement projectile weapons
 
         //private void DamageIfDamageable (Collision collision)
         //{            
