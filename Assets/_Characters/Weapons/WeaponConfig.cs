@@ -14,6 +14,7 @@ namespace RPG.Characters
         [SerializeField] float maxAttackRange = 2f;
         [SerializeField] float additionalDamage = 10f;
         [SerializeField] float damageDelay = 0.5f;
+        [SerializeField] bool useDominantHand = true;
 
         public GameObject GetWeaponPrefab ()
         {
@@ -44,6 +45,11 @@ namespace RPG.Characters
         public float GetDamageDelay ()
         {
             return damageDelay;
+        }
+
+        public bool GetUseDominantHand ()
+        {
+            return useDominantHand;
         }
 
         private void RemoveAnimationEvents ()

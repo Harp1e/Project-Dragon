@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-// TODO Look at implementing a second hand feature (non-Dominant hand) for 2 handed weapons (e.g. bow & shield)
+// TODO Consider allowing sword & shield operation?
 
 namespace RPG.Characters
 {
@@ -47,9 +47,13 @@ namespace RPG.Characters
                 float distanceToTarget = Vector3.Distance (transform.position, target.transform.position);
                 targetIsOutOfRange = distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
             }
-
-            float characterHealth = GetComponent<HealthSystem> ().healthAsPercentage;
-            bool characterIsDead = (characterHealth <= Mathf.Epsilon);
+            bool characterIsDead = false;
+            HealthSystem healthSystem = GetComponent<HealthSystem> ();
+            if (healthSystem != null)
+            {
+                float characterHealth = healthSystem.healthAsPercentage;
+                characterIsDead = (characterHealth <= Mathf.Epsilon);
+            }
 
             if (characterIsDead || targetIsOutOfRange || targetIsDead)
             {
@@ -67,11 +71,23 @@ namespace RPG.Characters
         {
             currentWeaponConfig = weaponToUse;
             var weaponPrefab = weaponToUse.GetWeaponPrefab ();
-            GameObject dominantHand = RequestDominantHand ();
-            Destroy (weaponObject);
-            weaponObject = Instantiate (weaponPrefab, dominantHand.transform);
-            weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
-            weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
+            if (currentWeaponConfig.GetUseDominantHand())
+            {
+                GameObject dominantHand = RequestDominantHand ();
+                Destroy (weaponObject);
+                weaponObject = Instantiate (weaponPrefab, dominantHand.transform);
+                weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
+                weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
+            }
+            else
+            {
+                GameObject otherHand = RequestOtherHand ();
+                Destroy (weaponObject);
+                weaponObject = Instantiate (weaponPrefab, otherHand.transform);
+                weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
+                weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
+            }
+           
         }
 
         public void AttackTarget (GameObject targetToAttack)
@@ -109,7 +125,6 @@ namespace RPG.Characters
 
         void SetAttackAnimation ()
         {
-            //animator = GetComponent<Animator> ();
             if (!character.GetOverrideController())
             {
                 Debug.Break ();
@@ -123,13 +138,27 @@ namespace RPG.Characters
             }
         }
 
-        private GameObject RequestDominantHand ()
+        GameObject RequestDominantHand ()
         {
             var dominantHands = GetComponentsInChildren<DominantHand> ();
             int numberOfDominantHands = dominantHands.Length;
             Assert.IsFalse (numberOfDominantHands <= 0, "No DominantHand found on Player. Please add one.");
             Assert.IsFalse (numberOfDominantHands > 1, "Multiple DominantHand scripts found on Player. Please remove all but one.");
             return dominantHands[0].gameObject;
+        }
+
+        GameObject RequestOtherHand ()
+        {
+            var otherHands = GetComponentsInChildren<OtherHand> ();
+            int numberOfOtherHands = otherHands.Length;
+            Assert.IsFalse (numberOfOtherHands <= 0, "No OtherHand found on Player. Please add one.");
+            Assert.IsFalse (numberOfOtherHands > 1, "Multiple OtherHand scripts found on Player. Please remove all but one.");
+            return otherHands[0].gameObject;
+        }
+
+        void RemovePriorWeapon ()
+        {
+
         }
 
         void AttackTargetOnce ()

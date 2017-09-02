@@ -360,6 +360,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4963798680297794}
+  - component: {fileID: 114840714326129588}
   m_Layer: 0
   m_Name: Hand_L
   m_TagString: Untagged
@@ -1951,6 +1952,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14780e05201d0184ea38252a09193074, type: 3}
   - {fileID: 8300000, guid: bb057f41becf2ae4c806ae5206739b1b, type: 3}
   - {fileID: 8300000, guid: 23d02b63a317c1846ad761dd11e9bb93, type: 3}
+--- !u!114 &114840714326129588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424401821884980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c3b860005b42543ab18ce72be7f6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137570971910586290
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

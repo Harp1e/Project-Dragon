@@ -19,3 +19,4 @@ MonoBehaviour:
   maxAttackRange: 6
   additionalDamage: 15
   damageDelay: 0.7
+  useDominantHand: 0
