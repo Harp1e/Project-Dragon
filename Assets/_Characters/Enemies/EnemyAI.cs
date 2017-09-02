@@ -48,13 +48,12 @@ namespace RPG.Characters
             if (distanceToPlayer > chaseRadius && state != State.patrolling)
             {
                 StopAllCoroutines ();
-                weaponSystem.StopAttacking ();
+                //weaponSystem.StopAttacking ();
                 StartCoroutine (Patrol ());
             }
             if (distanceToPlayer <= chaseRadius && state != State.chasing)
             {
                 StopAllCoroutines ();
-                weaponSystem.StopAttacking ();
                 StartCoroutine (ChasePlayer());
             }
             if (distanceToPlayer < currentWeaponRange && state != State.attacking)

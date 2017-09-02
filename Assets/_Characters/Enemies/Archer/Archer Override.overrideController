@@ -5,8 +5,8 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Enemy 101 Override
+  m_Name: Archer Override
   m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 37a3f14ed3ddecb4ca2038cef2ec5cac, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 65ab56ec63abae340b7646d2ed24c864, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 24d693751e9fd0b42ba8f9595d8b5f5e, type: 3}

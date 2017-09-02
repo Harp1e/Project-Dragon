@@ -89,7 +89,7 @@ namespace RPG.Characters
                 bool isTimeToHitAgain = (Time.time - lastHitTime) > timeToWait;
                 if (isTimeToHitAgain)
                 {
-                    AttackTarget ();
+                    AttackTargetOnce ();
                 }
                 yield return new WaitForSeconds (timeToWait);
             }
@@ -130,12 +130,12 @@ namespace RPG.Characters
             return dominantHands[0].gameObject;
         }
 
-        void AttackTarget ()
+        void AttackTargetOnce ()
         {
             SetAttackAnimation ();
             transform.LookAt (target.transform);
             animator.SetTrigger (ATTACK_TRIGGER);
-            float damageDelay = 1.0f;   // TODO get from the weapon...
+            float damageDelay = currentWeaponConfig.GetDamageDelay ();
             lastHitTime = Time.time;
             StartCoroutine (DamageAfterDelay (damageDelay));
         }
