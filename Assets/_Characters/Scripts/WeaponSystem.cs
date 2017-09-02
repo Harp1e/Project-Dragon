@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+// TODO Look at implementing a second hand feature (non-Dominant hand) for 2 handed weapons (e.g. bow & shield)
+
 namespace RPG.Characters
 {
     public class WeaponSystem : MonoBehaviour
