@@ -21,7 +21,6 @@ namespace RPG.Characters
             audioSource = GetComponent<AudioSource> ();
         }
 
-        //void Update ()
         public void RefreshPrefab ()
         {
             if (!Application.isPlaying)
@@ -50,7 +49,6 @@ namespace RPG.Characters
         {
             weaponSystem = other.GetComponent<WeaponSystem> ();
             if (weaponSystem != null && weaponSystem.gameObject.tag == "Player" && !weaponCollected)
-            // if (character != null)
             {
                 weaponCollected = true;
                 audioSource.PlayOneShot (pickupSFX);
@@ -65,6 +63,7 @@ namespace RPG.Characters
                 // old weapon is lost when dropped
                 weaponSystem.PutWeaponInHand (weaponConfig);
                 // Disable the pickup point
+                yield return new WaitForSeconds (0.2f);
                 gameObject.SetActive (false);
                 yield break;
             }

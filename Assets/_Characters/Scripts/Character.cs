@@ -19,7 +19,7 @@ namespace RPG.Characters
         [Header ("AudioTrigger")]
         [SerializeField] GameObject audioTriggerPrefab;
         [SerializeField] AudioClip[] triggerClips;
-        [SerializeField] int triggerLayerFilter = 10; 
+        [SerializeField] int triggerLayerFilter = 10;
         [SerializeField] float triggerRadius = 3f;
         [SerializeField] bool triggerIsOneTimeOnly = true;
 
@@ -39,6 +39,13 @@ namespace RPG.Characters
         [SerializeField] float navMeshSteeringSpeed = 1f;
         [SerializeField] float navMeshStoppingDistance = 1f;
 
+        [Header ("AI Parameters for NPCs")]
+        [SerializeField] float chaseRadius = 4f;
+        [SerializeField] WaypointContainer patrolPath;
+        [SerializeField] float waypointDwellTime = 0.5f;
+        [SerializeField] float patrolSpeed = 0.5f;
+        [SerializeField] bool isCompanion = false;
+
         Rigidbody myRigidbody;
         NavMeshAgent navMeshAgent;
         Animator animator;
@@ -56,6 +63,14 @@ namespace RPG.Characters
         public int GetTriggerLayerFilter () { return triggerLayerFilter; }
         public float GetTriggerRadius () { return triggerRadius; }
         public bool GetTriggerIsOneTimeOnly () { return triggerIsOneTimeOnly; }
+
+        public float GetChaseRadius () { return chaseRadius; }
+        public WaypointContainer GetPatrolPath () { return patrolPath; }
+        public float GetWaypointDwellTime () { return waypointDwellTime; }
+        public float GetPatrolSpeed () { return patrolSpeed; }
+        public bool GetIsCompanion () { return isCompanion; }
+
+
 
         void Awake ()
         {

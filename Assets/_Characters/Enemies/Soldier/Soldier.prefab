@@ -192,9 +192,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4350876328407770}
   - component: {fileID: 114232236869067626}
-  - component: {fileID: 114269892935708978}
   - component: {fileID: 114785481181194378}
   - component: {fileID: 114590469775273988}
+  - component: {fileID: 114431646915423316}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -1796,7 +1796,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d93739e671b4083469f6d37325563133, type: 3}
   - {fileID: 8300000, guid: 85d45bb8fad4b2340a67fcb2803f09de, type: 3}
   - {fileID: 8300000, guid: dc59be49bf7858b44997cd3f7cbe8b62, type: 3}
-  - {fileID: 8300000, guid: 7604788073de75941bf5ddbf682c463f, type: 3}
   - {fileID: 8300000, guid: d26b101177610ec4296d82ab6bebc72a, type: 3}
   triggerLayerFilter: 10
   triggerRadius: 2
@@ -1811,7 +1810,12 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshSteeringSpeed: 1
   navMeshStoppingDistance: 1
---- !u!114 &114269892935708978
+  chaseRadius: 6
+  patrolPath: {fileID: 0}
+  waypointDwellTime: 2
+  patrolSpeed: 0.5
+  isCompanion: 0
+--- !u!114 &114431646915423316
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1819,13 +1823,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129785205595446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4116a7e6d9bdea94984498fabdfc1f41, type: 3}
+  m_Script: {fileID: 11500000, guid: c1c8fa9d9e861b242b5c1a2ac11a95a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRadius: 4
-  patrolPath: {fileID: 0}
-  waypointDwellTime: 2
-  patrolSpeed: 0.5
 --- !u!114 &114468479496827320
 MonoBehaviour:
   m_ObjectHideFlags: 1

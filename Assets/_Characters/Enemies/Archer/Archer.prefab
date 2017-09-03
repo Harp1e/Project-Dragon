@@ -111,9 +111,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4989837329935514}
   - component: {fileID: 114450723255303462}
-  - component: {fileID: 114140424159055084}
   - component: {fileID: 114173662771002860}
   - component: {fileID: 114757862241373302}
+  - component: {fileID: 114168017318743768}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114140424159055084
+--- !u!114 &114168017318743768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1817,13 +1817,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1114637134122710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4116a7e6d9bdea94984498fabdfc1f41, type: 3}
+  m_Script: {fileID: 11500000, guid: c1c8fa9d9e861b242b5c1a2ac11a95a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRadius: 4
-  patrolPath: {fileID: 0}
-  waypointDwellTime: 2
-  patrolSpeed: 0.5
 --- !u!114 &114173662771002860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1916,6 +1912,11 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshSteeringSpeed: 1
   navMeshStoppingDistance: 1
+  chaseRadius: 2
+  patrolPath: {fileID: 0}
+  waypointDwellTime: 0.5
+  patrolSpeed: 0.5
+  isCompanion: 0
 --- !u!114 &114512987070438662
 MonoBehaviour:
   m_ObjectHideFlags: 1

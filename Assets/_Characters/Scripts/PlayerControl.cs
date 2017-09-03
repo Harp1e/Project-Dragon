@@ -45,7 +45,7 @@ namespace RPG.Characters
             }
         }
 
-        void OnMouseOverEnemy (EnemyAI enemy)
+        void OnMouseOverEnemy (Enemy_AI enemy)
         {
             if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
             {
@@ -76,13 +76,13 @@ namespace RPG.Characters
             yield return new WaitForEndOfFrame ();
         }
 
-        IEnumerator MoveAndAttack(EnemyAI enemy)
+        IEnumerator MoveAndAttack(Enemy_AI enemy)
         {
             yield return StartCoroutine (MoveToTarget (enemy.gameObject));
             weaponSystem.AttackTarget (enemy.gameObject);
         }
 
-        IEnumerator MoveAndAttemptSpecialAbility (EnemyAI enemy)
+        IEnumerator MoveAndAttemptSpecialAbility (Enemy_AI enemy)
         {
             yield return StartCoroutine (MoveToTarget (enemy.gameObject));
             abilities.AttemptSpecialAbility (0, enemy.gameObject);
