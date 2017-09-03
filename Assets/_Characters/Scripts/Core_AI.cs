@@ -11,9 +11,11 @@ namespace RPG.Characters
     {
         protected float chaseRadius;
         protected WaypointContainer patrolPath;
-        protected float waypointDwellTime = 0.5f;
-        protected float patrolSpeed = 0.5f;
-        protected bool isCompanion = false;
+        protected float waypointDwellTime;
+        protected float patrolSpeed;
+        protected bool randomPatrol;
+        protected float maxPatrolRadius;
+        protected bool isCompanion;
 
         protected Character character;
         protected NavMeshAgent agent;
@@ -26,7 +28,10 @@ namespace RPG.Characters
         protected float currentWeaponRange;
         protected float distanceToPlayer;
         protected float originalSpeed;
-        protected int nextWaypointIndex;
+
+        int nextWaypointIndex = 0;
+        Vector3 startPosition;
+        Vector3 nextRandomWaypoint;
 
         protected virtual void Start ()
         {
@@ -39,7 +44,11 @@ namespace RPG.Characters
             patrolPath = character.GetPatrolPath ();
             waypointDwellTime = character.GetWaypointDwellTime ();
             patrolSpeed = character.GetPatrolSpeed ();
+            randomPatrol = character.GetRandomPatrol ();
+            maxPatrolRadius = character.GetMaxPatrolRadius ();
             isCompanion = character.GetIsCompanion ();
+            startPosition = transform.position;
+            nextRandomWaypoint = startPosition;
         }
 
         protected virtual void Update ()
@@ -70,20 +79,36 @@ namespace RPG.Characters
 
         IEnumerator Patrol ()
         {
-
-            // TODO Add random patrol option - if single patrol point then select random direction to patrol
-
             state = State.patrolling;
             agent.speed = patrolSpeed;
-            while (patrolPath != null)
+            while (patrolPath != null || randomPatrol)
             {
-                Vector3 nextWaypointPos = patrolPath.transform.GetChild (nextWaypointIndex).position;
-                character.SetDestination (nextWaypointPos);
-                CycleWaypointWhenClose (nextWaypointPos);
-                yield return new WaitForSeconds (waypointDwellTime);
+                if (randomPatrol)
+                {
+                    character.SetDestination (nextRandomWaypoint);
+                    GetNextRandomWaypoint ();
+                    yield return new WaitForSeconds (waypointDwellTime);
+                    character.SetDestination (nextRandomWaypoint);
+                }
+                else
+                {
+                    Vector3 nextWaypointPos = patrolPath.transform.GetChild (nextWaypointIndex).position;
+                    character.SetDestination (nextWaypointPos);
+                    CycleWaypointWhenClose (nextWaypointPos);
+                    yield return new WaitForSeconds (waypointDwellTime);
+                }
             }
         }
 
+        void GetNextRandomWaypoint ()
+        {
+            if (Vector3.Distance (transform.position, nextRandomWaypoint) <= agent.stoppingDistance)
+            {
+                nextRandomWaypoint.x = Random.Range (startPosition.x - maxPatrolRadius, startPosition.x + maxPatrolRadius);
+                nextRandomWaypoint.z = Random.Range (startPosition.z - maxPatrolRadius, startPosition.z + maxPatrolRadius);
+                nextRandomWaypoint.y = startPosition.y;
+            }
+        }
 
         void CycleWaypointWhenClose (Vector3 nextWaypointPos)
         {

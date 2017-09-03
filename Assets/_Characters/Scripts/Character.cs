@@ -44,6 +44,8 @@ namespace RPG.Characters
         [SerializeField] WaypointContainer patrolPath;
         [SerializeField] float waypointDwellTime = 0.5f;
         [SerializeField] float patrolSpeed = 0.5f;
+        [SerializeField] bool randomPatrol = false;
+        [SerializeField] float maxPatrolRadius = 5f;
         [SerializeField] bool isCompanion = false;
 
         Rigidbody myRigidbody;
@@ -68,6 +70,8 @@ namespace RPG.Characters
         public WaypointContainer GetPatrolPath () { return patrolPath; }
         public float GetWaypointDwellTime () { return waypointDwellTime; }
         public float GetPatrolSpeed () { return patrolSpeed; }
+        public bool GetRandomPatrol () { return randomPatrol; }
+        public float GetMaxPatrolRadius () { return maxPatrolRadius; }
         public bool GetIsCompanion () { return isCompanion; }
 
 
