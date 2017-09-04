@@ -1125,6 +1125,10 @@ Prefab:
       propertyPath: maxPatrolRadius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1129785205595446, guid: edfbf75aec967fb4295d7dad60f81cc4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: edfbf75aec967fb4295d7dad60f81cc4, type: 2}
   m_IsPrefabParent: 0
@@ -5017,6 +5021,10 @@ Prefab:
         type: 2}
       propertyPath: maxPatrolRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114637134122710, guid: 88d17239a7528dd48b80eb7a9a7d82d9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88d17239a7528dd48b80eb7a9a7d82d9, type: 2}

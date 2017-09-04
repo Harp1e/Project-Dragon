@@ -9,12 +9,14 @@ namespace RPG.Characters
         Character character;
         SpecialAbilities abilities;
         WeaponSystem weaponSystem;
+        HealthSystem healthSystem;
 
         void Start ()
         {
             character = GetComponent<Character> ();
             abilities = GetComponent<SpecialAbilities> ();
             weaponSystem = GetComponent<WeaponSystem> ();
+            healthSystem = GetComponent<HealthSystem> ();
 
             RegisterForMouseEvents ();
         }
@@ -28,7 +30,7 @@ namespace RPG.Characters
 
         void Update ()
         {
-            if (abilities != null)
+            if (abilities != null && healthSystem.healthAsPercentage > 0f)
             {
                 ScanForAbilityKeyDown ();
             }
@@ -106,7 +108,10 @@ namespace RPG.Characters
 
         public void TriggerSpecialAbility (int ability)
         {
-            abilities.AttemptSpecialAbility (ability);
+            if (healthSystem.healthAsPercentage > 0f)
+            {
+                abilities.AttemptSpecialAbility (ability);
+            }
         }
     }
 }
