@@ -1060,14 +1060,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361716328726882}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.025383065, y: 0.7265015, z: 0.02397767, w: 0.68627715}
+  m_LocalPosition: {x: 2.3173463, y: 0.013076901, z: 2.05698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4955525131509096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.9960003, y: 93.270004, z: -0.22800002}
 --- !u!4 &4329237999432940
 Transform:
   m_ObjectHideFlags: 1
@@ -2003,10 +2003,12 @@ MonoBehaviour:
   moveThreshold: 1
   navMeshSteeringSpeed: 1
   navMeshStoppingDistance: 3
-  chaseRadius: 1
+  chaseRadius: 0
   patrolPath: {fileID: 0}
-  waypointDwellTime: 0.5
+  waypointDwellTime: 2
   patrolSpeed: 0.5
+  randomPatrol: 0
+  maxPatrolRadius: 5
   isCompanion: 0
 --- !u!137 &137225179512275450
 SkinnedMeshRenderer:

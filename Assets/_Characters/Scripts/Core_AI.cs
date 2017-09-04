@@ -32,6 +32,7 @@ namespace RPG.Characters
         int nextWaypointIndex = 0;
         Vector3 startPosition;
         Vector3 nextRandomWaypoint;
+        Vector3 previousPosition = Vector3.zero;
 
         protected virtual void Start ()
         {
@@ -102,12 +103,16 @@ namespace RPG.Characters
 
         void GetNextRandomWaypoint ()
         {
-            if (Vector3.Distance (transform.position, nextRandomWaypoint) <= agent.stoppingDistance)
+            if (Vector3.Distance (transform.position, nextRandomWaypoint) <= agent.stoppingDistance || 
+                agent.pathStatus == NavMeshPathStatus.PathInvalid || 
+                //agent.pathStatus == NavMeshPathStatus.PathPartial ||
+                transform.position == previousPosition)
             {
                 nextRandomWaypoint.x = Random.Range (startPosition.x - maxPatrolRadius, startPosition.x + maxPatrolRadius);
                 nextRandomWaypoint.z = Random.Range (startPosition.z - maxPatrolRadius, startPosition.z + maxPatrolRadius);
                 nextRandomWaypoint.y = startPosition.y;
             }
+            previousPosition = transform.position;
         }
 
         void CycleWaypointWhenClose (Vector3 nextWaypointPos)
