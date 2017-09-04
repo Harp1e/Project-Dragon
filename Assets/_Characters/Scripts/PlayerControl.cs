@@ -104,5 +104,9 @@ namespace RPG.Characters
             }
         }
 
+        public void TriggerSpecialAbility (int ability)
+        {
+            abilities.AttemptSpecialAbility (ability);
+        }
     }
 }
