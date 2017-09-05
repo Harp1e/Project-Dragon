@@ -6,8 +6,9 @@ namespace RPG.CameraUI
 {
     public class CameraRaycaster : MonoBehaviour    
     {
-        [SerializeField] Texture2D walkCursor = null;
-        [SerializeField] Texture2D enemyCursor = null;
+        [SerializeField] Texture2D walkCursor;
+        [SerializeField] Texture2D enemyCursor;
+        [SerializeField] Texture2D UICursor;
         [SerializeField] Vector2 cursorHotspot = new Vector2 (0, 0);
 
         const int POTENTIALLY_WALKABLE_LAYER = 8;
@@ -29,7 +30,7 @@ namespace RPG.CameraUI
             // Check if pointer is over an interactable UI element
             if (EventSystem.current.IsPointerOverGameObject ())
             {
-                // TODO Implement UI interaction
+                Cursor.SetCursor (UICursor, cursorHotspot, CursorMode.Auto);
             }
             else
             {

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace RPG.Characters
 {
+    [RequireComponent (typeof (Character))]
+    [RequireComponent (typeof (WeaponSystem))]
     [RequireComponent (typeof (HealthSystem))]
     public class Enemy_AI : Core_AI
     {

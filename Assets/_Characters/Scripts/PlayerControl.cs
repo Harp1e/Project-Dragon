@@ -4,6 +4,10 @@ using RPG.CameraUI;
 
 namespace RPG.Characters
 {
+    [RequireComponent (typeof (Character))]
+    [RequireComponent (typeof (SpecialAbilities))]
+    [RequireComponent (typeof (WeaponSystem))]
+    [RequireComponent (typeof (HealthSystem))]
     public class PlayerControl : MonoBehaviour
     {
         Character character;

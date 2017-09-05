@@ -1901,7 +1901,7 @@ MonoBehaviour:
   waypointDwellTime: 1
   patrolSpeed: 0.5
   randomPatrol: 1
-  maxPatrolRadius: 5
+  maxPatrolRadius: 10
   isCompanion: 0
 --- !u!114 &114662820597878664
 MonoBehaviour:
@@ -1979,7 +1979,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ccae2dc6cf6f0c4479b782fedd0c8172, type: 2}
+  - {fileID: 2100000, guid: 32d4ff406718df84aa7dce129fc2f819, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

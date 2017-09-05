@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 // TODO Consider allowing sword & shield operation?
+// TODO do we want to trigger a Take Hit animaion (based on current weapon)?
 
 namespace RPG.Characters
 {
@@ -154,11 +155,6 @@ namespace RPG.Characters
             Assert.IsFalse (numberOfOtherHands <= 0, "No OtherHand found on Player. Please add one.");
             Assert.IsFalse (numberOfOtherHands > 1, "Multiple OtherHand scripts found on Player. Please remove all but one.");
             return otherHands[0].gameObject;
-        }
-
-        void RemovePriorWeapon ()
-        {
-
         }
 
         void AttackTargetOnce ()

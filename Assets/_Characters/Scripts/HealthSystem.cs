@@ -51,6 +51,7 @@ namespace RPG.Characters
             currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
             if (damage > 0)
             {
+                // TODO do we want a Take Hit animaion (based on current weapon)?
                 var clip = damageSounds[Random.Range (0, damageSounds.Length)];
                 audioSource.PlayOneShot (clip);
             }

@@ -95,7 +95,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkCursor: {fileID: 2800000, guid: c82388e8676a2b54a90d17c8d2cf3489, type: 3}
   enemyCursor: {fileID: 2800000, guid: bd27920bd7550a349bef17dbde138669, type: 3}
+  UICursor: {fileID: 2800000, guid: fa276a96e96fb834fb5d561395359f34, type: 3}
   cursorHotspot: {x: 0, y: 0}
 --- !u!114 &114886558481615548
 MonoBehaviour:
