@@ -1875,14 +1875,7 @@ MonoBehaviour:
   audioSpatialBlend: 0.5
   audioTriggerPrefab: {fileID: 1237777095768644, guid: 300b70538d1b25a4bacbaa37cbe9f85f,
     type: 2}
-  triggerClips:
-  - {fileID: 8300000, guid: 6da16ecaccfe83a4ebe666c07f3dce47, type: 3}
-  - {fileID: 8300000, guid: b1900794051f0b94ba7e625c85b20293, type: 3}
-  - {fileID: 8300000, guid: d93739e671b4083469f6d37325563133, type: 3}
-  - {fileID: 8300000, guid: 85d45bb8fad4b2340a67fcb2803f09de, type: 3}
-  - {fileID: 8300000, guid: dc59be49bf7858b44997cd3f7cbe8b62, type: 3}
-  - {fileID: 8300000, guid: 7604788073de75941bf5ddbf682c463f, type: 3}
-  - {fileID: 8300000, guid: d26b101177610ec4296d82ab6bebc72a, type: 3}
+  triggerClips: []
   triggerLayerFilter: 10
   triggerRadius: 2
   triggerIsOneTimeOnly: 0

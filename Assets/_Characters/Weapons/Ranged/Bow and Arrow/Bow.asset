@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 53ddfb67396ece24ba7f176345cb3c96, type: 3}
   - {fileID: 7400000, guid: c23971557f2d433459489e34cfffe31b, type: 3}
   - {fileID: 7400000, guid: 6c06abe464d25514d84efe52dcfa0139, type: 3}
+  reloadTime: 1
   maxAttackRange: 6
   additionalDamage: 15
   damageDelay: 0.7
