@@ -16,32 +16,31 @@ namespace RPG.Characters
         protected override void Update ()
         {
             base.Update ();
-            if (distanceToPlayer < character.GetTriggerRadius() && state != State.talking)
+            if (inTalkRange && state != State.talking)
             {
                 StopAllCoroutines ();
-                TalkToPlayer ();
+                StartCoroutine(TalkToPlayer ());
             }
         }
 
         protected override IEnumerator ChasePlayer ()
         {
-            {
-                state = State.chasing;
-                agent.speed = originalSpeed;
+            state = State.chasing;
+            agent.speed = originalSpeed;
                
-                while (distanceToPlayer >= currentWeaponRange && distanceToPlayer <= chaseRadius)
-                {
-                    character.SetDestination (player.transform.position);
-                    yield return new WaitForEndOfFrame ();
-                }
+            while (inChaseRange)
+            {
+                character.SetDestination (player.transform.position);
+                yield return new WaitForEndOfFrame ();
             }
         }
 
-        void TalkToPlayer ()
+        IEnumerator TalkToPlayer ()
         {
             state = State.talking;
             agent.speed = originalSpeed;
             character.SetDestination (transform.position);
+            yield return new WaitForEndOfFrame ();
         }
 
     }

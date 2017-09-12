@@ -28,6 +28,11 @@ namespace RPG.Characters
         protected float currentWeaponRange;
         protected float distanceToPlayer;
         protected float originalSpeed;
+        protected bool inWeaponRange;
+        protected bool inChaseRange;
+        protected bool outsideChaseRange;
+        protected bool inTalkRange;
+        protected bool isNPC;
 
         int nextWaypointIndex = 0;
         Vector3 startPosition;
@@ -50,6 +55,11 @@ namespace RPG.Characters
             isCompanion = character.GetIsCompanion ();
             startPosition = transform.position;
             nextRandomWaypoint = startPosition;
+
+            if (GetComponent<NPC_AI>() != null)
+            {
+                isNPC = true;
+            }
         }
 
         protected virtual void Update ()
@@ -58,18 +68,29 @@ namespace RPG.Characters
 
             weaponSystem = GetComponent<WeaponSystem> ();
             currentWeaponRange = weaponSystem.GetCurrentWeapon ().GetMaxAttackRange ();
-            
-            if (distanceToPlayer > chaseRadius && state != State.patrolling)
+
+            inWeaponRange = distanceToPlayer <= currentWeaponRange;
+            inChaseRange = distanceToPlayer > currentWeaponRange && distanceToPlayer <= chaseRadius;
+            outsideChaseRange = distanceToPlayer > chaseRadius;
+            inTalkRange = distanceToPlayer < character.GetTriggerRadius () && isNPC;
+
+            if (outsideChaseRange && !inTalkRange && state != State.patrolling)
             {
                 StopAllCoroutines ();
-                //weaponSystem.StopAttacking ();
+                weaponSystem.StopAttacking ();
                 StartCoroutine (Patrol ());
             }
 
-            if (distanceToPlayer <= chaseRadius && state != State.chasing)
+            if (inChaseRange && state != State.chasing)
             {
                 StopAllCoroutines ();
+                weaponSystem.StopAttacking ();
                 StartCoroutine (ChasePlayer ());
+            }
+
+            if (inTalkRange && state != State.talking)
+            {
+                StopAllCoroutines ();
             }
         }
 
@@ -89,7 +110,6 @@ namespace RPG.Characters
                     character.SetDestination (nextRandomWaypoint);
                     GetNextRandomWaypoint ();
                     yield return new WaitForSeconds (waypointDwellTime);
-                    character.SetDestination (nextRandomWaypoint);
                 }
                 else
                 {
@@ -103,10 +123,11 @@ namespace RPG.Characters
 
         void GetNextRandomWaypoint ()
         {
-            if (Vector3.Distance (transform.position, nextRandomWaypoint) <= agent.stoppingDistance || 
-                agent.pathStatus == NavMeshPathStatus.PathInvalid || 
-                //agent.pathStatus == NavMeshPathStatus.PathPartial ||
-                transform.position == previousPosition)
+            if (Vector3.Distance (transform.position, nextRandomWaypoint) <= agent.stoppingDistance 
+                || agent.pathStatus == NavMeshPathStatus.PathInvalid
+                //|| agent.pathStatus == NavMeshPathStatus.PathPartial
+                || transform.position == previousPosition
+                )
             {
                 nextRandomWaypoint.x = Random.Range (startPosition.x - maxPatrolRadius, startPosition.x + maxPatrolRadius);
                 nextRandomWaypoint.z = Random.Range (startPosition.z - maxPatrolRadius, startPosition.z + maxPatrolRadius);

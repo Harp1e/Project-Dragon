@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475d2ffbe615abd499d5c63b4c9abaa8, type: 3}
+  m_Name: Rod_L0
+  m_EditorClassIdentifier: 
+  gripTransform: {fileID: 4760213929144624, guid: 769c9fa714c81794fafaff18a493fbcb,
+    type: 2}
+  weaponPrefab: {fileID: 1264841264416798, guid: 6d06a2cbdc27b5442a59a151753821ff,
+    type: 2}
+  attackAnimations:
+  - {fileID: 7400000, guid: fcd5d479f75a6b44595e56fa981bdda4, type: 3}
+  - {fileID: 7400000, guid: f0f38438b1a0602489d98f902699342b, type: 3}
+  - {fileID: 7400000, guid: f7d404696aab6a44f814961d95b1230f, type: 3}
+  - {fileID: 7400000, guid: 4496e3e9b4c7231499b46f4e5d36d430, type: 3}
+  - {fileID: 7400000, guid: 89f7465b9c6e93b45a3566efabf8a688, type: 3}
+  - {fileID: 7400000, guid: 9a30e1d5a08198046b998ff084ada9d3, type: 3}
+  reloadTime: 0
+  maxAttackRange: 3
+  additionalDamage: 0
+  damageDelay: 0.5
+  useDominantHand: 1

@@ -14,8 +14,8 @@ namespace RPG.CameraUI
 
         void LateUpdate ()
         {
-            //        transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f);
-            transform.position = player.transform.position;
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f);
+            //transform.position = player.transform.position;
         }
     }
 }

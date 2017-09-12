@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 475d2ffbe615abd499d5c63b4c9abaa8, type: 3}
-  m_Name: Bow
+  m_Name: Bow_LH
   m_EditorClassIdentifier: 
   gripTransform: {fileID: 4760213929144624, guid: 508f8cb923b27ca4c9dcb57acfe93a19,
     type: 2}
@@ -25,5 +25,5 @@ MonoBehaviour:
   reloadTime: 1
   maxAttackRange: 6
   additionalDamage: 15
-  damageDelay: 0.7
+  damageDelay: 1
   useDominantHand: 0

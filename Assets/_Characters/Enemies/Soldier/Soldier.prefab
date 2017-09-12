@@ -1169,7 +1169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129785205595446}
   m_LocalRotation: {x: -0, y: 0.8154048, z: -0, w: 0.5788913}
-  m_LocalPosition: {x: 2.49, y: -0.01, z: 4.38}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4614981268051920}
@@ -1826,8 +1826,8 @@ MonoBehaviour:
   colliderHeight: 2.03
   moveSpeedMultiplier: 0.7
   animatorSpeedMultiplier: 1.5
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
+  movingTurnSpeed: 800
+  stationaryTurnSpeed: 800
   moveThreshold: 1
   navMeshSteeringSpeed: 1
   navMeshStoppingDistance: 1
@@ -1887,20 +1887,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a84f04e8ad5ab747a15009ba768ec69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 100
+  maxHealthPoints: 120
   deathVanishSeconds: 3
   healthBar: {fileID: 114864467169463460}
   damageSounds:
-  - {fileID: 8300000, guid: 801b54b7671480e42a7377e4e9552c88, type: 3}
-  - {fileID: 8300000, guid: 8dace4e45cb62b84f83b82dc2f9c7e84, type: 3}
-  - {fileID: 8300000, guid: 7809a56bc4df0ae48897bdd1bbc57651, type: 3}
-  - {fileID: 8300000, guid: b647afb8f3d0bc54da685b58fa94cecb, type: 3}
-  - {fileID: 8300000, guid: 62a169f03bd79714d928203cd2c6b8d9, type: 3}
-  - {fileID: 8300000, guid: 69b13b82c72435f4b815b5f6e6b1370c, type: 3}
+  - {fileID: 8300000, guid: a4a4eb404ec41d64db0d0a2b207e2686, type: 3}
+  - {fileID: 8300000, guid: 2132e7abe4f414a479b63787d796dcca, type: 3}
+  - {fileID: 8300000, guid: c459d7d4c57a86f4e88e691541903d10, type: 3}
+  - {fileID: 8300000, guid: f687c9d6f0b379c4b837746974dd6718, type: 3}
+  - {fileID: 8300000, guid: f0273b7ca11d31145b8e6b19b7470346, type: 3}
+  - {fileID: 8300000, guid: b4ec223a16be2a94fbed4c481ff46549, type: 3}
+  - {fileID: 8300000, guid: 5db5bb46f4f80994890ada335c5019d0, type: 3}
+  - {fileID: 8300000, guid: e0b87048f8cf0d946b3efcf9c08c5ad0, type: 3}
+  - {fileID: 8300000, guid: f2f2c98b3952ce44e92917d57b0ab683, type: 3}
+  - {fileID: 8300000, guid: 87ea892a5cf4f7640860f25a073169c7, type: 3}
   deathSounds:
-  - {fileID: 8300000, guid: 14780e05201d0184ea38252a09193074, type: 3}
-  - {fileID: 8300000, guid: bb057f41becf2ae4c806ae5206739b1b, type: 3}
-  - {fileID: 8300000, guid: 23d02b63a317c1846ad761dd11e9bb93, type: 3}
+  - {fileID: 8300000, guid: 1ab7f1259e591f24097b296d94dd7009, type: 3}
 --- !u!114 &114785481181194378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1912,9 +1914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e532ac5ef0ab79c4c98c02c029c09bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponConfig: {fileID: 11400000, guid: 44e59ca700d228543af948d75ac0874a,
+  currentWeaponConfig: {fileID: 11400000, guid: eec9ca0d0c90a6c4c9821e081835f5cb,
     type: 2}
-  baseDamage: 10
+  baseDamage: 14
 --- !u!114 &114792146343791920
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1007,14 +1007,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361716328726882}
-  m_LocalRotation: {x: -0.025383065, y: 0.7265015, z: 0.02397767, w: 0.68627715}
-  m_LocalPosition: {x: 2.18, y: 0, z: -0.37}
+  m_LocalRotation: {x: 0, y: 0.796002, z: 0, w: 0.60529405}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4955525131509096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -3.9960003, y: 93.270004, z: -0.22800002}
+  m_LocalEulerAnglesHint: {x: 0, y: 105.5, z: 0}
 --- !u!4 &4329237999432940
 Transform:
   m_ObjectHideFlags: 1
@@ -1756,9 +1756,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e532ac5ef0ab79c4c98c02c029c09bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponConfig: {fileID: 11400000, guid: c657e8fa24817574fab3277199cb38ed,
+  currentWeaponConfig: {fileID: 11400000, guid: e16b4c520aee6b44abe1418b5a99db94,
     type: 2}
-  baseDamage: -10
+  baseDamage: 0
 --- !u!114 &114643028600468142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1810,11 +1810,11 @@ MonoBehaviour:
   colliderHeight: 2.03
   moveSpeedMultiplier: 0.7
   animatorSpeedMultiplier: 1.5
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
+  movingTurnSpeed: 800
+  stationaryTurnSpeed: 800
   moveThreshold: 1
   navMeshSteeringSpeed: 1
-  navMeshStoppingDistance: 3
+  navMeshStoppingDistance: 1
   chaseRadius: 0
   patrolPath: {fileID: 0}
   waypointDwellTime: 2

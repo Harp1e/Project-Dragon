@@ -1202,7 +1202,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263407292354660}
   m_LocalRotation: {x: -0, y: 0.8154048, z: -0, w: 0.5788913}
-  m_LocalPosition: {x: 14.4, y: -0.01, z: -6.06}
+  m_LocalPosition: {x: 20.87, y: -0.01, z: -13.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4627042154861476}
@@ -1883,13 +1883,20 @@ MonoBehaviour:
   colliderCenter: {x: 0, y: 1.03, z: 0}
   colliderRadius: 0.2
   colliderHeight: 2.03
-  moveSpeedMultiplier: 1
+  moveSpeedMultiplier: 0.8
   animatorSpeedMultiplier: 1.5
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
+  movingTurnSpeed: 1000
+  stationaryTurnSpeed: 800
   moveThreshold: 1
   navMeshSteeringSpeed: 1
   navMeshStoppingDistance: 0.5
+  chaseRadius: 4
+  patrolPath: {fileID: 0}
+  waypointDwellTime: 0.5
+  patrolSpeed: 0.5
+  randomPatrol: 0
+  maxPatrolRadius: 5
+  isCompanion: 0
 --- !u!137 &137560855296286146
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
