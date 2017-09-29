@@ -1802,7 +1802,6 @@ MonoBehaviour:
     type: 2}
   triggerClips:
   - {fileID: 8300000, guid: ef8fb4c94ee9a3c4ab76fe0a48d50033, type: 3}
-  triggerLayerFilter: 10
   triggerRadius: 3
   triggerIsOneTimeOnly: 1
   colliderCenter: {x: 0, y: 1.03, z: 0}
@@ -1814,8 +1813,8 @@ MonoBehaviour:
   stationaryTurnSpeed: 800
   moveThreshold: 1
   navMeshSteeringSpeed: 1
-  navMeshStoppingDistance: 1
-  chaseRadius: 0
+  navMeshStoppingDistance: 0.5
+  chaseRadius: 2
   patrolPath: {fileID: 0}
   waypointDwellTime: 2
   patrolSpeed: 0.5

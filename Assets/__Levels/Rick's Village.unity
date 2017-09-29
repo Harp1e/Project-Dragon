@@ -609,6 +609,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 141884830}
+  - component: {fileID: 141884831}
   m_Layer: 0
   m_Name: Game Setup
   m_TagString: Untagged
@@ -632,6 +633,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &141884831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 141884829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77548fedb6a9e4041a41d1ca48483c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &144464336
 Prefab:
   m_ObjectHideFlags: 0
@@ -2802,6 +2814,14 @@ Prefab:
         type: 2}
       propertyPath: baseDamage
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263407292354660, guid: ac23129813b60cd49855a4633ea6e542, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521461187339872, guid: ac23129813b60cd49855a4633ea6e542, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac23129813b60cd49855a4633ea6e542, type: 2}

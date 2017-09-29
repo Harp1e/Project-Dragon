@@ -19,7 +19,6 @@ namespace RPG.Characters
         [Header ("AudioTrigger")]
         [SerializeField] GameObject audioTriggerPrefab;
         [SerializeField] AudioClip[] triggerClips;
-        [SerializeField] int triggerLayerFilter = 10;
         [SerializeField] float triggerRadius = 3f;
         [SerializeField] bool triggerIsOneTimeOnly = true;
 
@@ -43,7 +42,7 @@ namespace RPG.Characters
         [SerializeField] float chaseRadius = 4f;
         [SerializeField] WaypointContainer patrolPath;
         [SerializeField] float waypointDwellTime = 0.5f;
-        [SerializeField] float patrolSpeed = 0.5f;
+        [SerializeField] [Range (0.1f, 1f)] float patrolSpeed = 0.5f;
         [SerializeField] bool randomPatrol = false;
         [SerializeField] float maxPatrolRadius = 5f;
         [SerializeField] bool isCompanion = false;
@@ -62,7 +61,6 @@ namespace RPG.Characters
         }
 
         public AudioClip[] GetAudioClips () { return triggerClips; }
-        public int GetTriggerLayerFilter () { return triggerLayerFilter; }
         public float GetTriggerRadius () { return triggerRadius; }
         public bool GetTriggerIsOneTimeOnly () { return triggerIsOneTimeOnly; }
 

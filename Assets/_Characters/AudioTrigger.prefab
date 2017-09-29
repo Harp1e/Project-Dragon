@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4689318853106032}
   - component: {fileID: 114353929490396260}
   m_Layer: 0
-  m_Name: AudoTrigger
+  m_Name: AudioTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

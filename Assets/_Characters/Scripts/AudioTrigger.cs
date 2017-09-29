@@ -5,33 +5,29 @@ namespace RPG.Characters
     public class AudioTrigger : MonoBehaviour
     {
         AudioClip[] clips;
-        int layerFilter;
         float triggerRadius;
         bool isOneTimeOnly;
 
         bool hasPlayed = false;
         AudioSource audioSource;
         Character character;
+        GameObject player;
 
         void Start ()
         {
             character = GetComponentInParent<Character> ();
             clips = character.GetAudioClips ();
-            layerFilter = character.GetTriggerLayerFilter ();
+            player = GameObject.FindWithTag ("Player");
             triggerRadius = character.GetTriggerRadius ();
             isOneTimeOnly = character.GetTriggerIsOneTimeOnly ();
 
-            audioSource = gameObject.GetComponentInParent<AudioSource> ();
-            
-            SphereCollider sphereCollider = gameObject.AddComponent<SphereCollider> ();
-            sphereCollider.isTrigger = true;
-            sphereCollider.radius = triggerRadius;
-            gameObject.layer = LayerMask.NameToLayer ("Ignore Raycast");
+            audioSource = gameObject.GetComponentInParent<AudioSource> ();           
         }
 
-        void OnTriggerEnter (Collider other)
+        void Update ()
         {
-            if (other.gameObject.layer == layerFilter)
+            float distanceToPlayer = Vector3.Distance (transform.position, player.transform.position);
+            if (distanceToPlayer <= triggerRadius)
             {
                 RequestPlayAudioClip ();
             }

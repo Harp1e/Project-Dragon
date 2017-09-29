@@ -39,7 +39,15 @@ namespace RPG.Characters
         {
             state = State.talking;
             agent.speed = originalSpeed;
-            character.SetDestination (transform.position);
+            if (Vector3.Distance(transform.position, player.transform.position) >= agent.stoppingDistance)
+            {
+                character.SetDestination (player.transform.position);
+            }
+            else
+            {
+                character.SetDestination (transform.position);
+            }
+            transform.LookAt (player.transform);
             yield return new WaitForEndOfFrame ();
         }
 

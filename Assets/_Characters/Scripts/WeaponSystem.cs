@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 // TODO Consider allowing sword & shield operation?
-// TODO do we want to trigger a Take Hit animaion (based on current weapon)?
+// TODO do we want to trigger a Take Hit animation (based on current weapon)?
+// TODO Associate attack sounds to individual weapons - remove from health system?
 
 namespace RPG.Characters
 {
@@ -103,8 +104,10 @@ namespace RPG.Characters
             bool targetStillAlive = target.GetComponent<HealthSystem> ().healthAsPercentage > 0;
             while (attackerStillAlive && targetStillAlive)
             {
-                float weaponHitPeriod = currentWeaponConfig.GetMinTimeBetweenHits ();
-                float timeToWait = weaponHitPeriod * character.GetAnimSpeedMultiplier ();
+                var animationClip = currentWeaponConfig.GetAttackAnimClip ();
+                float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier ();
+                float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles ();
+
                 bool isTimeToHitAgain = (Time.time - lastHitTime) > timeToWait;
                 if (isTimeToHitAgain)
                 {
@@ -130,7 +133,7 @@ namespace RPG.Characters
             if (!character.GetOverrideController())
             {
                 Debug.Break ();
-                Debug.LogAssertion ("Please provide " + gameObject + " with an Animator Override Controller");
+                Debug.LogAssertion ("Please provide " + gameObject.name + " with an Animator Override Controller");
             }
             else
             {
@@ -144,8 +147,8 @@ namespace RPG.Characters
         {
             var dominantHands = GetComponentsInChildren<DominantHand> ();
             int numberOfDominantHands = dominantHands.Length;
-            Assert.IsFalse (numberOfDominantHands <= 0, "No DominantHand found on Player. Please add one.");
-            Assert.IsFalse (numberOfDominantHands > 1, "Multiple DominantHand scripts found on Player. Please remove all but one.");
+            Assert.IsFalse (numberOfDominantHands <= 0, "No DominantHand found on " + gameObject.name + ". Please add one.");
+            Assert.IsFalse (numberOfDominantHands > 1, "Multiple DominantHand scripts found on " + gameObject.name + ". Please remove all but one.");
             return dominantHands[0].gameObject;
         }
 
@@ -153,8 +156,8 @@ namespace RPG.Characters
         {
             var otherHands = GetComponentsInChildren<OtherHand> ();
             int numberOfOtherHands = otherHands.Length;
-            Assert.IsFalse (numberOfOtherHands <= 0, "No OtherHand found on Player. Please add one.");
-            Assert.IsFalse (numberOfOtherHands > 1, "Multiple OtherHand scripts found on Player. Please remove all but one.");
+            Assert.IsFalse (numberOfOtherHands <= 0, "No OtherHand found on " + gameObject.name + ". Please add one.");
+            Assert.IsFalse (numberOfOtherHands > 1, "Multiple OtherHand scripts found on " + gameObject.name + ". Please remove all but one.");
             return otherHands[0].gameObject;
         }
 
