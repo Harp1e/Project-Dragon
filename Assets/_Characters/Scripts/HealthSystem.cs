@@ -70,19 +70,17 @@ namespace RPG.Characters
         {
             characterMovement.Kill ();
             animator.SetTrigger (DEATH_TRIGGER);
+            audioSource.clip = deathSounds[Random.Range (0, deathSounds.Length)];
+            audioSource.Play ();
 
             var playerComponent = GetComponent<PlayerControl> ();
             if (playerComponent && playerComponent.isActiveAndEnabled)
-            {
-                audioSource.clip = deathSounds[Random.Range (0, deathSounds.Length)];
-                audioSource.Play ();
+            {               
                 yield return new WaitForSecondsRealtime (audioSource.clip.length);
                 SceneManager.LoadScene (0);
             }
             else    // assume is enemy for now, reconsider on other NPCs
             {
-                audioSource.clip = deathSounds[Random.Range (0, deathSounds.Length)];
-                audioSource.Play ();
                 DestroyObject (gameObject, deathVanishSeconds);
             }
         }

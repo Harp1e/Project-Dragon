@@ -19,6 +19,7 @@ namespace RPG.Characters
         [Header ("AudioTrigger")]
         [SerializeField] GameObject audioTriggerPrefab;
         [SerializeField] AudioClip[] triggerClips;
+        [SerializeField] [Range (0f, 1f)] float triggerVolume = 1f;
         [SerializeField] float triggerRadius = 3f;
         [SerializeField] bool triggerIsOneTimeOnly = true;
 
@@ -61,6 +62,7 @@ namespace RPG.Characters
         }
 
         public AudioClip[] GetAudioClips () { return triggerClips; }
+        public float GetTriggerVolume () { return triggerVolume; }
         public float GetTriggerRadius () { return triggerRadius; }
         public bool GetTriggerIsOneTimeOnly () { return triggerIsOneTimeOnly; }
 

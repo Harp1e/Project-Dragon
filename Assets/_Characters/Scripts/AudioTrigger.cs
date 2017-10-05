@@ -5,23 +5,38 @@ namespace RPG.Characters
     public class AudioTrigger : MonoBehaviour
     {
         AudioClip[] clips;
+        float triggerVolume;
         float triggerRadius;
         bool isOneTimeOnly;
 
         bool hasPlayed = false;
         AudioSource audioSource;
-        Character character;
+        //Character character;
         GameObject player;
 
         void Start ()
         {
-            character = GetComponentInParent<Character> ();
-            clips = character.GetAudioClips ();
-            player = GameObject.FindWithTag ("Player");
-            triggerRadius = character.GetTriggerRadius ();
-            isOneTimeOnly = character.GetTriggerIsOneTimeOnly ();
 
-            audioSource = gameObject.GetComponentInParent<AudioSource> ();           
+            if (GetComponentInParent<Character> ())
+            {
+                Character character = GetComponentInParent<Character> ();
+                clips = character.GetAudioClips ();
+                triggerVolume = character.GetTriggerVolume ();
+                triggerRadius = character.GetTriggerRadius ();
+                isOneTimeOnly = character.GetTriggerIsOneTimeOnly ();
+            }
+            else
+            {
+                FXTrigger fxTrigger = GetComponentInParent<FXTrigger> ();
+                clips = fxTrigger.GetAudioClips ();
+                triggerVolume = fxTrigger.GetTriggerVolume ();
+                triggerRadius = fxTrigger.GetTriggerRadius ();
+                isOneTimeOnly = fxTrigger.GetTriggerIsOneTimeOnly ();
+            }
+            player = GameObject.FindWithTag ("Player");
+
+            audioSource = gameObject.GetComponentInParent<AudioSource> ();
+            audioSource.volume = triggerVolume;
         }
 
         void Update ()
